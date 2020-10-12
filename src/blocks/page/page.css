@@ -1,0 +1,9 @@
+@import url('_no-scroll/page_no-scroll.css');
+
+.page {
+  width: 100wh;
+  height: 100%;
+  display: block;
+  /* flex: 1 0 auto; */
+
+}

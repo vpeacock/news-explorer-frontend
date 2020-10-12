@@ -1,0 +1,7 @@
+.article__button-container {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: row;
+}

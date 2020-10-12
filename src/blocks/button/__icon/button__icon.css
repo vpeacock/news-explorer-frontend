@@ -1,0 +1,12 @@
+@import url('_location/button__icon_location_main.css');
+@import url('_location/button__icon_location_articles.css');
+
+.button__icon {
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  margin-left: 8px;
+}

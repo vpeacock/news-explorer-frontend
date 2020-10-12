@@ -1,0 +1,7 @@
+@import url("__copyright/__copyright.css");
+@import url("__container/footer__container.css");
+
+.footer {
+  color: #1a1b22;
+  flex: 0 0 auto;
+}

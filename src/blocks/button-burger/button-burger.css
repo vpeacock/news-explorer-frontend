@@ -1,0 +1,17 @@
+@import url('_icon/button-burger_icon_white-menu.css');
+@import url('_icon/button-burger_icon_black-menu.css');
+
+.button-burger {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+}
+
+
+@media screen and (min-width: 600px) {
+  .button-burger {
+    display: none;
+  }
+}

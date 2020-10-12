@@ -1,0 +1,11 @@
+.search__container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: minmax(288px, 450px);
+}
+
+@media screen and (min-width: 768px) {
+  .search__container {
+    grid-template-columns: minmax(450px, 608px);
+  }
+}

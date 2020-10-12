@@ -1,0 +1,28 @@
+@import url('_state/button_state_active.css');
+@import url('_state/button_state_inactive.css');
+@import url('_size/button_size_l.css');
+@import url('_size/button_size_xl.css');
+@import url('_size/button_size_m.css');
+@import url('_color/button_color_white.css');
+@import url('_color/button_color_blue.css');
+@import url('_color/button_color_dark.css');
+@import url('_mobile/button_mobile.css');
+@import url('__icon/button__icon.css');
+@import url('_color/button_color_light.css');
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+}
+
+@media screen and (min-width: 980px) {
+.button {
+    font-size: 18px;
+}
+}

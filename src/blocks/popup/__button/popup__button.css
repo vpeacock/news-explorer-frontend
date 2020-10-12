@@ -1,0 +1,15 @@
+.popup__button {
+  display: inline-block;
+  margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    border: none;
+    margin-top: 23px;
+    font-weight: 600;
+    color: #FFF;
+}
+
+.popup__button:hover {
+  background: #347eff;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+}

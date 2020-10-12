@@ -1,0 +1,17 @@
+.navigation__link {
+  align-items: center;
+  list-style-type: none;
+  padding-left: 0;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 48px;
+    cursor: pointer;
+    color: #1a1b22;
+}
+
+@media (max-width: 1439px) and (min-width: 768px){
+  .navigation__link {
+      font-size: 16px;
+  }
+  }

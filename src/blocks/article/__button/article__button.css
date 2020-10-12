@@ -1,0 +1,22 @@
+@import url("_type/article__button_type_bookmark.css");
+@import url("_type/article__button_type_trash.css");
+@import url("_type/article__button_type_mark.css");
+
+.article__button {
+  border-radius: 8px;
+  background-color: #fff;
+  height: 40px;
+  width: 40px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  outline: none;
+ }
+
+ .article__button:hover .article__tooltip-text {
+   display: block;
+
+ }

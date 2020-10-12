@@ -1,0 +1,17 @@
+@import url('__search/header-sector__search.css');
+.header-sector {
+  width: 100%;
+  background: url("../../images/header_cover_mobile.jpg");
+  background-size: auto;
+  background-size: cover;
+
+}
+
+
+
+@media screen and (min-width: 400px) {
+  .hader-sector {
+    background: url("../../images/header_cover_main.jpg");
+  }
+}
+
