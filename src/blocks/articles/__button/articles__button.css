@@ -8,8 +8,8 @@
   border: none;
   padding: 0;
   margin: 30px auto 32px;
-    display: block;
-    width: 288px;
+  display: block;
+
 }
 
 .articles__button:hover {
@@ -17,9 +17,4 @@
   background: #FFFFFF;
 }
 
-@media screen and (min-width: 768px) and (max-width: 900px) {
-  .articles__button {
-    width: 240px;
-  }
-}
 

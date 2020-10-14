@@ -25,9 +25,10 @@
             <li class="lists__item"><a href="./" class="link__active-white nav__link">Главная</a> </li>
             <li class="lists__item  link__passive lists__item_is-invisible"><a href="./articles" class="nav__link ">Сохраненные статьи</a>
             </li>
-            <li class="lists__item"><button id="signin"
+            <li class="lists__item"><button id="authorization"
                 class=" button button_size_m button_color_dark">Авторизоваться</button></li>
-            <li class="lists__item lists__item_is-invisible"><button class="button button_size_m button_color_dark">Гретта<span class="button__icon button__icon_location_main"> </button></li>
+            <li class="lists__item lists__item_is-invisible">
+              <button class="button button_size_m button_color_dark">Гретта<span class="button__icon button__icon_location_main"></span></button></li>
           </ul>
         </nav>
       </div>
@@ -137,7 +138,7 @@
             <source media="(max-width: 670px)" srcset="<%=require('../images/author1-min.jpg').default%>" />
             <source media="(max-width: 1254px)" srcset="<%=require('../images/author2-min.jpg').default%>" />
             <source media="(max-width: 1440px)" srcset="<%=require('../images/author1-min.jpg').default%>" />
-            <img src="<%=require('../images/avatar mobile.jpg').default%>" alt="Фотография автора сайта"
+            <img src="<%=require('../images/avatar-mobile.jpg').default%>" alt="Фотография автора сайта"
               class="author__image" title="Фотография создателя сайта" />
           </picture>
         </div>
@@ -168,9 +169,9 @@
         </ul>
         <ul class="social">
           <li class="social__item"><a href="https://github.com/vpeacock/" class="social__link"><img
-            src="<%=require('../images/icon github_mobile.svg').default%>" alt="Иконка Github" class="social__img"></a></li>
+            src="<%=require('../images/github-mobile.svg').default%>" alt="Иконка Github" class="social__img"></a></li>
           <li class="social__item"><a href="https://facebook.com" class="social__link"><img
-            src="<%=require('../images/icon facebook_mobile.svg').default%>" alt="Иконка социальной сети Facebook"
+            src="<%=require('../images/facebook-mobile.svg').default%>" alt="Иконка социальной сети Facebook"
                 class="social__img"></a></li>
         </ul>
       </nav>
@@ -185,18 +186,18 @@
       <h3 class="popup__title">Вход</h3>
       <form class="popup__form" name="login">
         <div class="input-container">
-          <label for="email-login" class="form__label"><span class="popup__text">Email</span></label>
-          <input id="email-login" required type="email" name="email-login" class="popup__input input-focus"
+          <label for="email-login-auth" class="form__label"><span class="popup__text">Email</span></label>
+          <input id="email-login-auth" required type="email" name="email-login" class="popup__input input-focus"
             placeholder="Введите email">
-          <span id="error-email" class="error-message error-message_is-opened">email имеет неверный формат</span>
+          <span id="error-email-auth" class="error-message error-message_is-opened">email имеет неверный формат</span>
         </div>
         <div class="input-container">
-          <label for="password" class="form__label"><span class="popup__text">Пароль</span></label>
-          <input id="login-password" required type="password" name="password" class="popup__input input-focus"
+          <label for="login-password-auth" class="form__label"><span class="popup__text">Пароль</span></label>
+          <input id="login-password-auth" required type="password" name="password" class="popup__input input-focus"
             minlength="8" placeholder="Введите пароль">
-          <span id="error-password" class="error-message error-message_is-opened">Пароль имеет неверный формат </span>
+          <span id="error-password-auth" class="error-message error-message_is-opened">Пароль имеет неверный формат </span>
         </div>
-        <span id="" class="error-message error-message_type_server"></span>
+        <span id="error_server" class="error-message error-message_type_server"></span>
         <button type="submit" name="button"
           class="button button_size_l popup__button button_state active button_state_inactive"
           disabled="disabled">Войти</button>
@@ -216,14 +217,14 @@
       <h3 class="popup__title popup-signup__title">Регистрация</h3>
       <form class="popup__form" name="login">
         <div class="input-container">
-          <label for="email-login" class="form__label"><span class="popup__text">Email</span></label>
-          <input id="email-login" required type="email" name="email-login" class="popup__input input-focus"
+          <label for="email-signup" class="form__label"><span class="popup__text">Email</span></label>
+          <input id="email-signup" required type="email" name="email-login" class="popup__input input-focus"
             placeholder="Введите email">
-          <span id="error-email" class="error-message error-message_is-opened">Неправильный формат email</span>
+          <span id="error-email" class="error-message error-message_is-opened">email имеет неверный формат</span>
         </div>
 
         <div class="input-container">
-          <label for="password" class="form__label"><span class="popup__text">Пароль</span></label>
+          <label for="login-password" class="form__label"><span class="popup__text">Пароль</span></label>
           <input id="login-password" required type="password" name="password" class="popup__input input-focus"
             minlength="8" placeholder="Введите пароль">
           <span id="error-password" class="error-message error-message_is-opened">Пароль должен содержать не менее 8
@@ -231,8 +232,8 @@
         </div>
         <div class="input-container">
 
-          <label for="name" class="form__label"><span class="popup__text">Имя</span></label>
-          <input id="email-login" required type="text" name="email-login" class="popup__input input-focus"
+          <label for="name-check" class="form__label"><span class="popup__text">Имя</span></label>
+          <input id="name-check" required type="text" name="user-name" class="popup__input input-focus"
             placeholder="Введите своё имя">
           <span id="error-name" class="error-message error-message_is-opened">Введите не менее 2 символов</span>
 
@@ -245,19 +246,19 @@
           disabled="disabled">Зарегистрироваться</button>
         <div class="input-container">
           <span class="popup__change">или</span>
-          <span class="popup__text popup__text_status_move" id="register">Войти</span>
+          <span class="popup__text popup__text_status_move" id="login">Войти</span>
         </div>
       </form>
     </div>
   </div>
 
   <!-- popup_is-invisible -->
-  <div class="popup popup__successful-signup popup_is-invisible" id="popup__successful-signup"">
+  <div class="popup popup__successful-signup popup_is-invisible" id="popup__successful-signup">
       <div class=" popup__container">
     <img src="<%=require('../images/close_white_mobile.svg').default%>" alt="Иконка закрытия окна" class="popup__close">
     <a class="logo logo_color_white header__logo" href="./">NewsExplorer</a>
     <h3 class="popup__title popup-signup__title">Пользователь успешно зарегистрирован!</h3>
-    <span class="popup__text popup__text_status_move" id="register">Войти</span>
+    <span class="popup__text popup__text_status_move" id="auth">Войти</span>
   </div>
   </div>
 
@@ -280,7 +281,8 @@
             <li class="lists__item-mobile"><button id="signin"
                 class=" button button_size_m button_color_dark button_mobile">Авторизоваться</button></li>
 
-            <li class="lists__item-mobile"><button class="button button_size_m button_color_dark button_mobile">Гретта<span class="button__icon button__icon_location_main"> </button></li>
+            <li class="lists__item-mobile">
+              <button class="button button_size_m button_color_dark button_mobile">Гретта<span class="button__icon button__icon_location_main"></span></button></li>
           </ul>
         </nav>
       </div>
