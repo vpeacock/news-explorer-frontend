@@ -1,0 +1,12 @@
+@import url("_is-visible/button-close_is-visible.css");
+
+.button-close {
+  right: 16px;
+  top: 15px;
+  background-color: #1a1b22;
+  width: 24px;
+  position: absolute;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 5;
+}

@@ -9,6 +9,8 @@
 @import url('_mobile/button_mobile.css');
 @import url('__icon/button__icon.css');
 @import url('_color/button_color_light.css');
+@import url('_is-invisible/button_is-invisible.css');
+@import url('_type/button_type_authorization.css');
 
 .button {
   display: flex;

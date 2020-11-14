@@ -7,4 +7,13 @@
   font-size: 16px;
   line-height: 24px;
   text-decoration: none;
+  position: relative;
+  z-index: 5;
+}
+
+@media screen and (min-width: 620px) {
+  .logo {
+    font-size: 20px;
+    line-height: 24px;
+  }
 }

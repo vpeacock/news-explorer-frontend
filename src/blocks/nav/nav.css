@@ -3,13 +3,17 @@
 @import url('__lists/nav__lists.css');
 @import url('_mobile/nav_mobile.css');
 @import url('__lists-mobile/nav__lists-mobile.css');
+@import url('__menu/nav__menu.css');
+@import url('_is-visible/nav_is-visible.css');
 
 
 .nav {
   display: none;
+  width: 100%;
+
 }
 
-@media screen and (min-width: 610px) {
+@media screen and (min-width: 620px) {
   .nav {
     display: flex;
   }

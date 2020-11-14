@@ -1,5 +1,23 @@
 .lists__item {
   list-style: none;
-  margin-left: 32px;
+  /* width: 100%; */
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 56px;
+}
 
+
+@media screen and (min-width: 620px) {
+  .lists__item {
+    margin-left: 10px;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .lists__item {
+    margin-left: 16px;
+  }
 }

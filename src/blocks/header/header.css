@@ -1,5 +1,6 @@
 @import url("__logo/header__logo.css");
 @import url("__container/header__container.css");
+@import url("__button-close/header__button-close.css");
 .header {
   /* position: relative;
   display: flex;
@@ -9,4 +10,18 @@
   border-bottom: hsla(0, 0%, 76.9%, 0.01);
   box-shadow: inset 0 -1px 0 hsla(0, 0%, 100%, 0.2);
   flex: 0 0 auto;
+
+}
+
+@media screen and (min-width: 620px) {
+  .header {
+    background-color: transparent;
+    position: relative;
+        display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* border-bottom: hsla(0, 0%, 76.9%, 0.01);
+    box-shadow: inset 0 -1px 0 hsla(0, 0%, 100%, 0.2); */
+  }
 }

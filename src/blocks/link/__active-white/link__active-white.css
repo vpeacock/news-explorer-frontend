@@ -1,5 +1,6 @@
-.link__active-white {
-  border-bottom: 4px solid #fff;
-
-
+@media screen and (min-width: 620px) {
+  .link__active-white {
+    border-bottom: 4px solid #fff;
+    padding-bottom: 30px;
+  }
 }

@@ -174,27 +174,8 @@
   </footer>
 
   <!-- popup_is-invisible-->
-  <div class="popup popup_type_menu-mobile popup_is-invisible" id="popup__menu-mobile">
-    <div class="popup__container popup__container_type_menu-mobile">
-      <img src="<%=require('../images/close_white_mobile.svg').default%>" alt="Иконка закрытия окна"
-        class="popup__close popup__close_menu">
-      <div class="container container_border-bottom">
-        <a class="logo logo_color_white header__logo" href="./">NewsExplorer</a>
-      </div>
-      <div class="container">
-        <nav class="nav nav_mobile">
-          <ul class="lists nav__lists-mobile">
-            <li class="lists__item-mobile"><a href="./" class="nav__link">Главная</a> </li>
-            <li class="lists__item-mobile link__passive"><a href="./articles" class="nav__link">Сохраненные
-                статьи</a>
-            </li>
-            <li class="lists__item-mobile"><button
-                class="button button_size_m button_color_dark button_mobile">Гретта<span
-                  class="button__icon button__icon_location_main"> </button></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+  <div class="popup popup_is-invisible" id="overlay">
+
   </div>
 
   <script src="<%= htmlWebpackPlugin.files.js %>"></script>

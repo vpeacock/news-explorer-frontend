@@ -10,12 +10,12 @@ const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: {
-    main: './src/scripts/index.js',
-    articles: './src/scripts/articles.js'
+    main: './src/index.js',
+    articles: './src/articles.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: './scripts/[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js'
   },
 
   module: {
@@ -23,10 +23,13 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
-      },
+        use: [{
+          loader: "babel-loader",
+          options: {
+            plugins: ['transform-class-properties'],
+        },
+      }],
+    },
       {
         test: /\.css$/i,
 

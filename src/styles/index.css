@@ -28,6 +28,8 @@
 @import url('../blocks/input-focus/input-focus.css');
 @import url('../blocks/lists/lists.css');
 @import url('../blocks/link/link.css');
+@import url('../blocks/popup-auth/popup-auth.css');
+@import url('../blocks/button-close/button-close.css');
 @import url('../blocks/root/root.css');
 
 @import url('../blocks/footer/footer.css');

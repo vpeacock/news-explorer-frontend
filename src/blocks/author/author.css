@@ -4,16 +4,4 @@
 @import url('__text/__text.css');
 @import url('__container/author__container.css');
 
-/* .author {
-  grid-template-columns: 1fr;
-display: grid;
-justify-items: center;
-padding-bottom: 80px;
 
-}
-
-@media screen and (min-width: 768px) {
-  .author{
-    grid-template-columns: 1fr 1fr;
-  }
-} */

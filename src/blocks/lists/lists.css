@@ -1,10 +1,30 @@
 @import url('_is-invisible/lists__item_is-invisible.css');
 @import url('__item/lists__item.css');
 @import url('__item-mobile/lists__item-mobile.css');
+@import url('__button/lists__button.css');
+@import url('__item-authorization/lists__item-authorization.css');
 
 .lists {
-  display: flex;
-  align-items: center;
+  /* display: flex; */
   box-sizing: border-box;
   margin: 0;
+  flex-direction: column;
+  padding-left: 0;
+  align-items: flex-start;
+  width: 100%;
+  padding: 16px;
+  border-top: 1px white solid;
+}
+
+@media screen and (min-width: 620px) {
+  .lists {
+    align-items: center;
+    flex-direction: row;
+    padding: 0;
+    justify-content:flex-end;
+    border-top: none;
+    display: flex;
+
+
+  }
 }
