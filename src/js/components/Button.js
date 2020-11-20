@@ -1,9 +1,9 @@
 import BaseComponent from './BaseComponent';
 
 export default class Button extends BaseComponent {
-  constructor(domElement) {
-    super(domElement);
-    this.domElement = domElement;
+  constructor(props) {
+    super(props);
+    this.domElement = props.domElement;
   }
 
   enable() {

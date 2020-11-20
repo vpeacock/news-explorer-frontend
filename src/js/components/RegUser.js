@@ -1,21 +1,18 @@
 export default class RegUser {
-  constructor(userEmail,
-    userPassword,
-    api, userName,
-  ) {
-    this.email = userEmail;
-    this.password = userPassword;
-    this.userName = userName;
-    this.api = api;
+  constructor(props) {
+    this.email = props.email;
+    this.password = props.password;
+    this.buttonName = props.name;
+    this.api = props.api;
     this.userInfo = {};
   }
 
   entryUser(data) {
-
+    let tmp = data['email'];
     this.userInfo = data;
     this.api.signin(this.userInfo)
       .then((data) => {
-        this.render(data);
+        this.render(tmp);
 
       })
       .catch((error) => {
@@ -23,8 +20,7 @@ export default class RegUser {
       });
   }
 
-  render(email) {
-    this.userName.textContent = this.api.getUser(email);
-
+  render(name) {
+    this.buttonName.textContent = name;
   }
 }

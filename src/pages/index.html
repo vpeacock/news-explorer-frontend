@@ -27,23 +27,28 @@
           <nav class="nav nav__menu">
             <ul class="lists nav__lists">
               <!-- lists__item_is-invisible -->
-              <li class="lists__item"><a href="./" class="link__active-white nav__link nav__link_main">Главная</a> </li>
+              <li class="lists__item"><a href="./" class="link__active-white nav__link">Главная</a> </li>
               <!-- lists__item_is-invisible -->
-              <li class="lists__item  link__passive "><a href="./articles"
-                  class="nav__link nav__link_saved-articles ">Сохраненные статьи</a>
+              <li class="lists__item  link__passive lists__item_auth"><a href="./articles"
+                  class="nav__link ">Сохраненные статьи</a>
               </li>
-              <li class="lists__item lists__item-authorization">
+              <li class="lists__item lists__item_unauth">
                 <button id="authorization" class="button button_size_m button_color_dark lists__button
                 button_type_authorization ">Авторизоваться</button></li>
-              <li class="lists__item ">
-                <button id="user-logout-button"
-                  class="button button_size_m button_color_dark lists__button lists__item_is-invisible">Гретта<span
-                    class="button__icon button__icon_location_main"></span></button></li>
+
+                <!-- lists__item_is-invisible -->
+              <li class="lists__item  lists__item_is-invisible lists__item_auth">
+                <button id="user-logout-button" class="button button_size_m button_color_dark lists__button button__icon button__icon_location_main">
+                  Гретта
+                  <!-- <span class="button__icon button__icon_location_main"></span> -->
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
 
       </header>
+
       <!-- <header class="header">
       <div class="container header__container">
         <a class="logo logo_color_white header__logo" href="./">NewsExplorer</a>
@@ -72,6 +77,7 @@
             <form class="search__form" name="searh">
               <input id="search" class="search__input input-focus" type="text" required minlength="2" maxlength="30"
                 placeholder="Введите тему новости">
+                <span  class="error-message error-message_is-opened"></span>
               <button class="button button_color_blue button_state_active button_size_l search__button">Искать</button>
             </form>
           </div>
@@ -228,7 +234,7 @@
               <span id="error-login-password-auth" class="error-message error-message_is-opened">Пароль имеет неверный
                 формат </span>
             </div>
-            <span id="error_server" class="error-message error-message_type_server"></span>
+            <span id="error_server" class="error-message error-message_center"></span>
             <button type="submit" name="button" id="popup-auth"
               class="button button_color_blue button_size_l popup__button button_state_inactive"
               disabled="true">Войти</button>

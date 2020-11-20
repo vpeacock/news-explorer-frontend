@@ -2,3 +2,10 @@
   .header__button-close {
     display: none;
   }
+
+
+  @media screen and (min-width: 619px) {
+    .button-close.header__button-close {
+      display: none;
+    }
+  }

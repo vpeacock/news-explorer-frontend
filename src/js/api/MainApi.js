@@ -1,6 +1,6 @@
 export default class MainApi {
-  constructor(options) {
-    this.options = options;
+  constructor(props) {
+    this.options = props.options;
   }
 
   signup({ email, password, name }) {
@@ -10,9 +10,9 @@ export default class MainApi {
       headers: this.options.headers,
       body: JSON.stringify({ email, password, name, }),
     })
-      .then((res) => res.json()
-        .then((data) => ({ status: res.status, data })))
-      .catch((err) => Promise.reject(err));
+    .then((res) => this.requestHandler(res)
+    .then((data) => ({ status: res.status, data })))
+
   }
 
 
@@ -23,21 +23,19 @@ export default class MainApi {
       headers: this.options.headers,
       body: JSON.stringify({ email, password, }),
     })
-      .then((res) => res.json()
+      .then((res) => this.requestHandler(res)
         .then((data) => ({ status: res.status, data })))
-      .catch((err) => Promise.reject(err));
   }
 
 
   logout() {
-    return fetch(`${this.options.baseUrl}/logout`, {
+    return fetch(`${this.options.baseUrl}/signout`, {
       method: 'POST',
       credentials: 'include',
       headers: this.options.headers,
     })
-      .then((res) => res.json()
+      .then((res) => this.requestHandler(res)
         .then((data) => ({ status: res.status, data })))
-      .catch((err) => Promise.reject(err));
   }
 
   getUserData() {
@@ -47,9 +45,8 @@ export default class MainApi {
       credentials: 'include',
       headers: this.options.headers,
     })
-      .then((res) => res.json()
+      .then((res) => this.requestHandler(res)
         .then((data) => ({ status: res.status, data })))
-      .catch((err) => Promise.reject(err));
 
   }
 
@@ -59,9 +56,8 @@ export default class MainApi {
       credentials: 'include',
       headers: this.options.headers,
     })
-      .then((res) => res.json()
+      .then((res) => this.requestHandler(res)
         .then((data) => ({ status: res.status, data })))
-      .catch((err) => Promise.reject(err));
   }
 
   createArticle(data) {
@@ -79,14 +75,8 @@ export default class MainApi {
         image: data.image,
       }),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        const json = res.json();
-        return json.then(Promise.reject.bind(Promise));
-      })
-      .catch((err) => Promise.reject(err));
+      .then((res) => this.requestHandler(res)
+        .then((data) => ({ status: res.status, data })))
   }
 
   removeArticle(id) {
@@ -95,13 +85,14 @@ export default class MainApi {
       credentials: 'include',
       headers: this.options.headers,
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        const json = res.json();
-        return json.then(Promise.reject.bind(Promise));
-      })
-      .catch((err) => Promise.reject(err));
+      .then((res) => this.requestHandler(res)
+        .then((data) => ({ status: res.status, data })))
+  }
+
+  requestHandler(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return res.json().then(Promise.reject.bind(Promise))
   }
 }

@@ -1,10 +1,5 @@
 export default class UserInfo {
-  constructor(props) {
-    this.email = props.email;
-    this.password = props.password;
-    this.name = props.name;
-    this.api = props.api;
-    this.successPopup = props.popup;
+  constructor() {
     this.userInfo = {};
   }
 

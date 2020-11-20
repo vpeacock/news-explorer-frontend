@@ -1,24 +1,25 @@
 export default class UtilsDate {
-  constructor(date){
+  constructor(date, period){
     this.date = date;
     this.day = date.getDate();
     this.month = date.getMonth();
     this.year = date.getFullYear();
+    this.period = period;
   }
 
-  getPrevDate() {
-    return (new Date(Date.parse(this.date - this.getDaysInMs)));
+  getPrevDate = () => {
+    return (new Date(this.date.getTime() - this.getDaysInMs()));
   }
 
-  getDaysInMs(days) {
-    return days * 24 * 60 * 60 * 1000;
+  getDaysInMs = () => {
+    return this.period * 24 * 60 * 60 * 1000;
   }
 
-  getDateString() {
+  getDateString = () => {
     return `${this.date.toLocaleString('ru', { day: 'numeric', month: 'long' })}, ${this.year}`;
   }
 
-  formatYYYYMMDD() {
+  formatYYYYMMDD = () => {
     if (this.day < 10) {
        this.day = `0${this.day}`;
     }

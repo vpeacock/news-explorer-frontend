@@ -1,19 +1,14 @@
 import UtilsDate from "../utils/UtilsDate";
+// import getDate from "../utils/index";
 
 export default class NewsApi {
-  constructor(options) {
-    this.options = options;
+  constructor(props) {
+    this.options = props.options;
   }
 
   getNews(keyword) {
-    const utilsDate = new UtilsDate(new Date());
-
-    return fetch(`${this.options.newsUrl}${keyword}
-    &from=${utilsDate.getPrevDate()}
-    &to=${new Date()}
-    &language=${this.options.language}
-    &sortBy=publishedAt&pageSize=${this.options.pageSize}
-    &apiKey=${this.options.key}`)
+    const utilsDate = new UtilsDate(new Date(), this.options.findPeriodTime);
+     return fetch(`${this.options.newsUrl}${keyword.keyword}&from=${utilsDate.getPrevDate().toISOString()}&to=${new Date().toISOString()}&language=${this.options.language}&sortBy=${this.options.sortBy}&pageSize=${this.options.pageSize}&apiKey=${this.options.key}`)
       .then((res) => {
         if (res.ok) {
           return res.json();

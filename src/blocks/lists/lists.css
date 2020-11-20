@@ -2,7 +2,7 @@
 @import url('__item/lists__item.css');
 @import url('__item-mobile/lists__item-mobile.css');
 @import url('__button/lists__button.css');
-@import url('__item-authorization/lists__item-authorization.css');
+
 
 .lists {
   /* display: flex; */

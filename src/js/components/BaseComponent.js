@@ -1,8 +1,6 @@
 export default class BaseComponent {
-  constructor(domElement, visibleClass, invisibleClass) {
+  constructor(domElement) {
     this.domElement = domElement;
-    this.visibleClass = visibleClass;
-    this.invisibleClass = invisibleClass;
   }
 
   setEventListener = (...args) => {
@@ -14,10 +12,10 @@ export default class BaseComponent {
   }
 
   show = () => {
-    this.domElement.classList.add(this.visibleClass);
+    this.domElement.classList.remove('lists__item_is-invisible');
   }
 
   hide = () => {
-    this.domElement.classList.remove(this.visibleClass);
+    this.domElement.classList.add('lists__item_is-invisible');
   }
 }
