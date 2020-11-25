@@ -16,7 +16,8 @@
   outline: none;
  }
 
- .article__button:hover .article__tooltip-text {
+ .article__button:hover.article__tooltip-text {
    display: block;
 
  }
+

@@ -18,7 +18,8 @@ import {
   overlay, buttonBurger, page, nav, buttonCloseMenu, popupButtonClose,
   overlayPopup,
   navMain, navArticles, navAuthorization, navUserName, buttonIcon,
-  navMenuMobile, mobileMenuClose, popups
+  navMenuMobile, mobileMenuClose, popups, articlesContainer,articlesMore,
+  messagePreloader, messageNotFound, messageServerError, articlesSection,
 } from './js/constants/constantsDomElements';
 
 import VALIDATION_HINT_MESSAGES from "./js/constants/errors-messages";
@@ -34,6 +35,8 @@ import PopupSignup from "./js/components/PopupSignup";
 import PopupSuccess from "./js/components/PopupSuccess";
 import PopupLogin from "./js/components/PopupLogin";
 import MenuMobile from "./js/components/MenuMobile";
+import Articles from "./js/components/Articles";
+import ArticlesList from "./js/components/ArticlesList";
 import Search from "./js/components/Search";
 
 import Page from "./js/components/Page";
@@ -59,12 +62,36 @@ import Page from "./js/components/Page";
     instMenuMobile.close();
   }
 
+  const renderArticles = (articles, keyword) => {
+    console.log(keyword);
+    instArticlesList.render(articles, keyword);
+
+  }
+
+  const cbCreateCard = (props) => {
+    console.log(props);
+    return new Articles(props);
+  }
+
+
+  const clearArticlesList = () => {
+    instArticlesList.clear();
+  }
+
   //Instancies ======================================================>
   const mainApi = new MainApi({options: MAIN_API_OPTIONS});
   const newsApi = new NewsApi({options: NEWS_API_OPTIONS});
 
   //const formSignupValidator = new FormValidator(formSignup, VALIDATION_HINT_MESSAGES);
   // const formEnterValidator = new FormValidator(formEnter, VALIDATION_HINT_MESSAGES);
+
+  const instPage = new Page({
+    serverError: messageServerError,
+    messageNotFound: messageNotFound,
+    articlesSection: articlesSection,
+    preloader: messagePreloader,
+    button: articlesMore,
+  })
 
   const instPopupSuccess = new PopupSuccess({
     popup: popupSuccessfulSignupDE,
@@ -101,6 +128,7 @@ import Page from "./js/components/Page";
     popups: popups,
   });
 
+
   const instHeader = new Header({
     api: mainApi,
     authButton: authButton,
@@ -109,6 +137,7 @@ import Page from "./js/components/Page";
     itemsAuth: itemsAuth,
     instPopupLog: instPopupLog,
     path: MAIN_BY_PATH,
+
 
 
   })
@@ -120,10 +149,29 @@ import Page from "./js/components/Page";
 
   })
 
+  // const instArticles = new Articles(props)
+
+  const instArticlesList = new ArticlesList({
+    cbCreateCard: cbCreateCard,
+    container: articlesContainer,
+    api: mainApi,
+  })
+
   const instSearchForm = new Search({
     form: formSearch,
     api: newsApi,
+    renderArticles: renderArticles,
+    instPage: instPage,
+    serverError: messageServerError,
+    messageNotFound: messageNotFound,
+    articlesSection: articlesSection,
+    preloader: messagePreloader,
+    buttomMore: articlesMore,
+    clearArticlesList: clearArticlesList,
   })
+
+
+
 
   // const instUserInfo = new UserInfo({
   //   email: emailInputSignup,
@@ -220,8 +268,10 @@ import Page from "./js/components/Page";
   buttonBurger.addEventListener('click', () => {
     instMenuMobile.open()
   });
+
+  // articlesMore.addEventListener('click', instSearchForm.slicingArray)
+
     instHeader.render();
     instSearchForm.setEventListener();
-
 
   })()

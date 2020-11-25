@@ -17,7 +17,6 @@ export default class MenuMobile {
   }
 
   close = (flag) => {
-    console.log(flag);
     this.menu.classList.remove('nav_is-visible');
     if (flag) {
 

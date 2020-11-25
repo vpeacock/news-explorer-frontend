@@ -40,7 +40,6 @@ export default class PopupLogin extends Popup {
     this.userInfo = data;
     this._api.signin(this.userInfo)
       .then((res) => {
-        console.log(res);
         this.renderHeader();
         this.close();
       })

@@ -1,3 +1,4 @@
 .article__text-container {
   margin: 12px 16px;
+  box-sizing: border-box;
 }

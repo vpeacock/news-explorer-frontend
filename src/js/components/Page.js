@@ -1,21 +1,30 @@
 export default class Page {
-  constructor(header, search, articles, preloader, author, footer ) {
-      this.header = header;
-      this.search = search;
-      this.articles = articles;
-      this.preloader = preloader;
-      this.author = author;
-      this.footer  = footer;
-      this.page = document.querySelector('.page');
+  constructor(props) {
+    this.errorMessage = props.serverError;
+    this.notFound = props.messageNotFound;
+    this.articles = props.articles;
+    this.preloader = props.preloader;
+    this.button = props.button;
+    this.page = document.querySelector('.page');
+
   }
 
-  render = () => {
-    this.header.render();
-    this.search.render();
-    this.articles.render();
-    this.preloader.render();
-    this.author.render();
-    this.footer.render();
+  showSection = (section) => {
+    section.classList.remove('message_is-invisible');
+  }
+
+  showButton = () => {
+    this.button.classList.remove('button_is-invisible');
+  }
+
+  hideButton = () => {
+    if (!this.button.classList.contains('button_is-invisible')) {
+      this.button.classList.add('button_is-invisible');
+    }
+  }
+
+  hideSection = (section) => {
+    section.classList.add('message_is-invisible');
   }
 
   disableScroll = () => {
@@ -25,4 +34,15 @@ export default class Page {
   enableScroll = () => {
     this.page.classList.remove('page_no-scroll');
   }
+
+  hideSections = () => {
+    const sections = [...this.page.querySelectorAll('.message')];
+    sections.forEach((section) => {
+      if (section.classList.contains('message_is-invisible')) {
+        return
+      }
+      this.hideSection(section);
+    });
+  }
+
 }

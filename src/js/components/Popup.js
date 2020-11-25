@@ -6,10 +6,9 @@ export default class Popup extends BaseComponent {
     super(props)
     this._popup = props.popup;
     // this._linkPopup = props.linkPopup;
-   }
+  }
 
   _open = () => {
-    // console.log(this._popup);
     // this._clear();
     this._popup.classList.add('popup_is-visible');
     this._setEventListeners();

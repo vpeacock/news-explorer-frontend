@@ -41,7 +41,6 @@ const openMenuMobile = () => {
 
 
 const closeMenuMobile = () => {
-  // console.log('меня нажали');
   overlay.classList.add('popup_is-invisible');
   page.classList.remove('page_no-scroll');
   nav.classList.remove('nav_is-visible');
@@ -67,14 +66,14 @@ const handleClickOverlay = (event) => {
 
 const handleKeydown = (event) => {
   if (event.key === 'Escape' || event.key === 'Esc') {
-    console.log(`esc`);
+
   }
 
 }
 
 
 const openPopupSignup = () => {
-  // console.log('меня нажали');
+
  authButton.removeEventListener('click',openPopupSignup);
 
   popupSignupDE.classList.remove('popup_is-invisible');
@@ -97,7 +96,6 @@ const openPopupSignup = () => {
 
 
 const closePopupSignup = () => {
-  console.log('меня нажали Close()');
   popupSignupDE.classList.add('popup_is-invisible');
   page.classList.remove('page_no-scroll');
   popupSignupDE.removeEventListener('click',handleKeydown);

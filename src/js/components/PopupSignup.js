@@ -26,8 +26,8 @@ export default class PopupSignup extends Popup {
 
   _signupUserForm = (event) => {
     event.preventDefault();
-      if (this._checkInputValidity()) {
-        this._regUserInfo({
+    if (this._checkInputValidity()) {
+      this._regUserInfo({
         email: this._emailInput.value,
         password: this._passwordInput.value,
         name: this._nameCheck.value
@@ -38,11 +38,9 @@ export default class PopupSignup extends Popup {
   };
 
   _regUserInfo = (data) => {
-    console.log(data);
     this.userInfo = data;
     this._api.signup(this.userInfo)
       .then((data) => {
-        console.log(data);
         this.close();
         this._openSuccess();
       })
@@ -134,7 +132,7 @@ export default class PopupSignup extends Popup {
   }
 
   close = (flag) => {
-    if(this.buttonBurger.classList.contains('button-burger_is-invisible') && flag) {
+    if (this.buttonBurger.classList.contains('button-burger_is-invisible') && flag) {
       this.buttonBurger.classList.remove('button-burger_is-invisible')
     }
     this._close();

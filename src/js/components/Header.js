@@ -15,9 +15,8 @@ export default class Header {
   render = () => {
     return this.mainApi.getUserData()
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
-          console.log(res.data.name);
+          localStorage.setItem('name', res.data.name)
           this._renderLogIn(res.data.name);
           // window.location.reload();
           // return Promise.resolve(res.data);
@@ -54,6 +53,7 @@ export default class Header {
   _renderLogOut = () => {
     this.isRegistered = false;
     this._logoutButton.textContent = ' ';
+    localStorage.removeItem('name');
     this._itemUnath.classList.remove('lists__item_is-invisible');
     this._itemsAuth.forEach(item => {
       item.classList.add('lists__item_is-invisible')
@@ -68,7 +68,6 @@ export default class Header {
   _userLogout = () => {
     this.mainApi.logout()
       .then((res) => {
-        console.log(res.status);
         if (res.status === 200) {
           if (window.location.pathname !== this.mainPath) {
             window.location.replace(this.mainPath);

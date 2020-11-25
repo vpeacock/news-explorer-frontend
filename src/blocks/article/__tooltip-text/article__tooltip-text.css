@@ -1,3 +1,5 @@
+@import url("_is-invisible/article__tooltip-text_is-invisible.css");
+
 .article__tooltip-text {
   position: absolute;
   display: none;

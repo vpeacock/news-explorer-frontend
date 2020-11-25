@@ -86,11 +86,12 @@
     </div>
 
     <main class="content">
-      <section class="articles">
+      <section class="message articles message_is-invisible">
         <div class="container">
           <h2 class="articles__title title_size_m">Результаты поиска</h2>
           <ul class="articles__grid">
-            <li class="article">
+            <!-- <li class="article">
+                 <span class="article__keyword article__keyword_is-invisible">Фотография</span>
               <div class="article__button-container">
                 <button class="article__button article__button_type_mark">
                   <span class="article__tooltip-text">
@@ -143,26 +144,36 @@
                   <span class="title title_size_xs article__link">риа</span>
                 </div>
               </a>
-            </li>
+            </li> -->
           </ul>
-          <button class="button button_size_l button_color_white articles__button">Показать еще</button>
+          <button class="button button_size_l button_color_white articles__button button_is-invisible">Показать еще</button>
         </div>
       </section>
 
-      <section class="preloader">
+      <section class="message message_preloader message_is-invisible">
         <div class="container preloader__container">
           <i class="circle-preloader"></i>
-          <p class="preloader__text">Идёт поиск новостей...</p>
+          <p class="message__text">Идёт поиск новостей...</p>
         </div>
       </section>
 
-      <section class="not-found not-found_is-opened">
+      <section class="message message_not-found message_is-invisible">
         <div class="container">
-          <img class="not-found__img" src="<%=require('../images/not-found_img_mobile.svg').default%>"
+          <img class="message__img" src="<%=require('../images/not-found_img_mobile.svg').default%>"
             alt="Картинка ничего не найдено.">
-          <h2 class="not-found__title title_size_s">Ничего не найдено</h2>
-          <p class="not-found__text">К сожалению по вашему запросу
+          <h2 class="message__title  title title_size_s">Ничего не найдено</h2>
+          <p class="message__text">К сожалению по вашему запросу
             ничего не найдено.</p>
+        </div>
+      </section>
+
+      <section class="message message_server-error message_is-invisible">
+        <div class="container">
+          <img class="message__img" src="<%=require('../images/not-found_img_mobile.svg').default%>"
+            alt="Картинка ничего не найдено.">
+          <h2 class="message__title title title_size_s">Что-то пошло не так</h2>
+          <p class="message__text">«Во время запроса произошла ошибка.<br /> Возможно, проблема с
+            соединением или сервер недоступен. Подождите немного и попробуйте ещё раз».</p>
         </div>
       </section>
 

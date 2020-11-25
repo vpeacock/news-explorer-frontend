@@ -1,8 +1,8 @@
-.not-found__text {
+.message__text {
   color: #b6bcbf;
   font-size: 18px;
   line-height: 24px;
   max-width: 325px;
   text-align: center;
-  margin: 0;
+  margin: 22px 0 0;
 }

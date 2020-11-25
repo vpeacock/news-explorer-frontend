@@ -7,7 +7,7 @@ export default class NewsApi {
   }
 
   getNews(keyword) {
-    const utilsDate = new UtilsDate(new Date(), this.options.findPeriodTime);
+    const utilsDate = new UtilsDate({date: new Date(), period: this.options.findPeriodTime});
      return fetch(`${this.options.newsUrl}${keyword.keyword}&from=${utilsDate.getPrevDate().toISOString()}&to=${new Date().toISOString()}&language=${this.options.language}&sortBy=${this.options.sortBy}&pageSize=${this.options.pageSize}&apiKey=${this.options.key}`)
       .then((res) => {
         if (res.ok) {

@@ -1,10 +1,12 @@
+import {months} from "../constants/constants";
+
 export default class UtilsDate {
-  constructor(date, period){
-    this.date = date;
-    this.day = date.getDate();
-    this.month = date.getMonth();
-    this.year = date.getFullYear();
-    this.period = period;
+  constructor(props){
+    this.date = props.date;
+    this.day = props.date.getDate();
+    this.month = props.date.getMonth();
+    this.year = props.date.getFullYear();
+    this.period = props.period;
   }
 
   getPrevDate = () => {
@@ -15,11 +17,11 @@ export default class UtilsDate {
     return this.period * 24 * 60 * 60 * 1000;
   }
 
-  getDateString = () => {
-    return `${this.date.toLocaleString('ru', { day: 'numeric', month: 'long' })}, ${this.year}`;
-  }
+  // getDateString = () => {
+  //   return `${this.date.toLocaleString('ru', { day: 'numeric', month: 'long' })}, ${this.year}`;
+  // }
 
-  formatYYYYMMDD = () => {
+  formatDate = () => {
     if (this.day < 10) {
        this.day = `0${this.day}`;
     }
@@ -27,6 +29,6 @@ export default class UtilsDate {
       this.month = `0${this.month}`;
     }
 
-    return `${this.year}-${this.month}-${this.day}`;
+    return `${this.day} ${months[this.month]}, ${this.year}`;
   }
 }

@@ -1,0 +1,14 @@
+@import url('__img/message__img.css');
+@import url('__text/message__text.css');
+@import url('__title/message__title.css');
+
+@import url('_is-invisible/message_is-invisible.css');
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 86px;
+  padding-bottom: 80px;
+  background: #f5f6f7;
+  text-align: center;
+}

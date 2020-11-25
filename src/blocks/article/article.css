@@ -9,6 +9,7 @@
 @import url("__tooltip-text/article__tooltip-text.css");
 @import url("__keyword/article__keyword.css");
 
+
 .article {
   display: flex;
   flex-direction: column;
@@ -16,4 +17,9 @@
   position: relative;
   background-color: #fff;
   width: 288px
+}
+
+.article:hover {
+  top: -2px;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.2);
 }

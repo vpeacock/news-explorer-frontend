@@ -32,6 +32,12 @@ export const nav = document.querySelector('.nav');
 export const buttonCloseMenu = document.querySelector('.header__button-close');
 // export const popupButtonClose = document.querySelector('.popup__button-close');
 export const overlayPopup = document.querySelector('.popup');
+export const articlesContainer = document.querySelector('.articles__grid');
+export const articlesMore = document.querySelector('.articles__button');
+export const articlesSection = document.querySelector('.articles');
+export const messagePreloader = document.querySelector('.message_preloader');
+export const messageNotFound = document.querySelector('.message_not-found');
+export const messageServerError = document.querySelector('.message_server-error');
 
 
 // **Search Container**

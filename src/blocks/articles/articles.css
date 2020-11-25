@@ -2,8 +2,10 @@
 @import url("./__grid/articles__grid.css");
 @import url("./__title/articles__title.css");
 @import url("./__button/articles__button.css");
+@import url("./_is-invisible/articles_is-invisible.css");
 
-.articles {
+.message.articles {
+  display: block;
   min-width: 288px;
   padding: 0 0 30px;
   margin: 0 auto;
