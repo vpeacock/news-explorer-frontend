@@ -91,6 +91,7 @@ import Page from "./js/components/Page";
     articlesSection: articlesSection,
     preloader: messagePreloader,
     button: articlesMore,
+    renderArticles: renderArticles,
   })
 
   const instPopupSuccess = new PopupSuccess({
@@ -99,6 +100,7 @@ import Page from "./js/components/Page";
     openLinkPopup: openPopupLogin,
     buttonBurger: buttonBurger,
     popups: popups,
+    page: instPage,
   });
 
   const instPopupLog = new PopupLogin({
@@ -112,6 +114,9 @@ import Page from "./js/components/Page";
     closeMenuMobile: closeMenuMobile,
     buttonBurger: buttonBurger,
     popups: popups,
+    renderArticles: renderArticles,
+    page: instPage,
+    clearArticlesList: clearArticlesList,
 
   });
 
@@ -126,6 +131,7 @@ import Page from "./js/components/Page";
     openSuccessPopup: openPopupSuccess,
     buttonBurger: buttonBurger,
     popups: popups,
+    page: instPage,
   });
 
 
@@ -137,16 +143,16 @@ import Page from "./js/components/Page";
     itemsAuth: itemsAuth,
     instPopupLog: instPopupLog,
     path: MAIN_BY_PATH,
-
-
-
+    page: instPage,
+    clearArticlesList: clearArticlesList,
   })
 
   const instMenuMobile = new MenuMobile({
     menu: navMenuMobile,
     buttonBurger: buttonBurger,
     buttonClose: mobileMenuClose,
-
+    page: instPage,
+    overlay: overlay,
   })
 
   // const instArticles = new Articles(props)
@@ -160,13 +166,11 @@ import Page from "./js/components/Page";
   const instSearchForm = new Search({
     form: formSearch,
     api: newsApi,
-    renderArticles: renderArticles,
     instPage: instPage,
     serverError: messageServerError,
     messageNotFound: messageNotFound,
     articlesSection: articlesSection,
     preloader: messagePreloader,
-    buttomMore: articlesMore,
     clearArticlesList: clearArticlesList,
   })
 

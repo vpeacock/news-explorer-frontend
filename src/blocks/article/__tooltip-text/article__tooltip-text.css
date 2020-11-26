@@ -2,7 +2,7 @@
 
 .article__tooltip-text {
   position: absolute;
-  display: none;
+  visibility: hidden;
   background: #ffffff;
   box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
   border-radius: 10px;

@@ -1,5 +1,6 @@
 .popup__button.button_state_inactive {
   background: #E6E8EB;
   color: #B6BCBF;
+  cursor: none;
 
 }

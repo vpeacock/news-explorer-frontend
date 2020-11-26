@@ -1,5 +1,5 @@
-import UtilsDate from "../utils/UtilsDate"
-
+import UtilsDate from "../utils/UtilsDate";
+import {imgUrl} from "../constants/constants";
 
 export default class Articles {
 
@@ -7,7 +7,7 @@ export default class Articles {
     console.log(props);
     this.data = props.data;
     this.keyword = props.keyword;
-    this.link = props.data.urlToImage || '../images/card1_mobile.jpg';
+    this.link = props.data.urlToImage || imgUrl;
     this.url = props.data.url;
     this.date = props.data.publishedAt;
     this.title = props.data.title;
@@ -55,9 +55,10 @@ export default class Articles {
     this.card.querySelector('.article__text').textContent = this.text;
     this.card.querySelector('.article__link').textContent = this.source;
 
-
-
-    if (localStorage.getItem('name')) {
+    console.log('я тут');
+    console.log(sessionStorage.getItem('name'));
+    const name = sessionStorage.getItem('name');
+    if (name) {
       this.setEventListeners();
       this.card.querySelector('.article__tooltip-text').classList.add('article__tooltip-text_is-invisible')
     }
@@ -121,7 +122,7 @@ export default class Articles {
       date: this.data.publishedAt,
       source: this.data.source.name,
       link: this.data.url,
-      image: this.data.urlToImage,
+      image: this.link,
     }
     console.log(cardInfo);
     this.api.createArticle(cardInfo)
@@ -132,7 +133,8 @@ export default class Articles {
         console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        const error = err.validation.message || err.message
+        console.log(error);
       })
   }
 
@@ -160,9 +162,5 @@ export default class Articles {
     .catch((err) => {
       console.log(err);
     })
-
-
-
   }
-
 }

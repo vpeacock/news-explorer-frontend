@@ -14,10 +14,8 @@
   background-repeat: no-repeat;
   background-position: 50%;
   outline: none;
- }
+}
 
- .article__button:hover.article__tooltip-text {
-   display: block;
-
- }
-
+.article__button:hover .article__tooltip-text {
+  visibility: visible;
+}

@@ -20,6 +20,7 @@ export default class PopupSignup extends Popup {
     this._buttonSubmit = this._form.querySelector('.button');
     this._link = this._form.querySelector('#login');
     this.userInfo = {};
+    this.page = props.page;
   }
 
 
@@ -38,6 +39,7 @@ export default class PopupSignup extends Popup {
   };
 
   _regUserInfo = (data) => {
+    this.disableForm();
     this.userInfo = data;
     this._api.signup(this.userInfo)
       .then((data) => {
@@ -47,7 +49,11 @@ export default class PopupSignup extends Popup {
       .catch((err) => {
         this._serverError.textContent = err.message
         console.log(err.message);
-      });
+      })
+      .finally(() => {
+        this.enableForm();
+        this._form.reset();
+      })
   }
 
   _checkInputValidity = () => {
@@ -167,6 +173,26 @@ export default class PopupSignup extends Popup {
     this.close(false);
     this._openLinkPopup();
   }
+
+  disableForm = () => {
+
+    this._inputs.forEach((input) =>
+      input.setAttribute('disabled', true)
+    );
+    // this._buttonSubmit.classList.remove('button_state_active');
+    this._buttonSubmit.classList.add('button_state_inactive');
+    this._buttonSubmit.setAttribute('disabled', true);
+  };
+
+
+  enableForm = () => {
+    this._inputs.forEach((input) =>
+      input.removeAttribute('disabled')
+    );
+    this._buttonSubmit.classList.remove('button_state_inactive');
+    // this._buttonSubmit.classList.add('button_state_active');
+    this._buttonSubmit.removeAttribute('disabled');
+  };
 
 
 }

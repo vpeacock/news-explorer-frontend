@@ -5,6 +5,7 @@ export default class Popup extends BaseComponent {
   constructor(props) {
     super(props)
     this._popup = props.popup;
+    this.page = props.page;
     // this._linkPopup = props.linkPopup;
   }
 
@@ -12,11 +13,13 @@ export default class Popup extends BaseComponent {
     // this._clear();
     this._popup.classList.add('popup_is-visible');
     this._setEventListeners();
+    this.page.disableScroll();
   }
 
   _close = () => {
     this._popup.classList.remove('popup_is-visible');
     this._removeEventListeners();
+    this.page.enableScroll();
   }
 
   // _clear = () => {

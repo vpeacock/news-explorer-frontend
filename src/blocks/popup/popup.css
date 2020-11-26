@@ -10,6 +10,7 @@
 @import url("__change/popup__change.css");
 @import url("_type/popup_type_menu-mobile.css");
 @import url("__button-close/popup__button-close.css");
+@import url("_overlay/popup_overlay.css");
 
 .popup {
   width: 100%;
@@ -19,7 +20,7 @@
   justify-content: center;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
-  top: 56px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;

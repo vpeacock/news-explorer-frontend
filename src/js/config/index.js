@@ -2,7 +2,7 @@
 
 export const MAIN_BY_PATH = '/';
 export const ARTICLES_PATH = '/articles.html';
-export const COUNT_NEWS = 3;
+
 
 export const NEWS_API_OPTIONS = {
   newsUrl: 'https://nomoreparties.co/news/v2/everything?q=',

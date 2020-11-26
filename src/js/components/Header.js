@@ -9,17 +9,26 @@ export default class Header {
     this._logoutButton = props.logoutButton;
     this.isRegistered = false;
     this.userName = '';
+    this.page = props.page;
+    this.clearArticlesList = props.clearArticlesList;
     // this._userLogout = this._userLogout.bind(this);
   }
 
   render = () => {
+    const articles = JSON.parse(sessionStorage.articles)
     return this.mainApi.getUserData()
       .then((res) => {
         if (res.status === 200) {
-          localStorage.setItem('name', res.data.name)
+          sessionStorage.name = res.data.name;
+          const name = sessionStorage.getItem('name');
+          console.log(name);
           this._renderLogIn(res.data.name);
+          this.clearArticlesList();
+          this.page.setArticleData(articles);
+
           // window.location.reload();
           // return Promise.resolve(res.data);
+
         }
       })
       .catch((err) => {
@@ -31,6 +40,7 @@ export default class Header {
 
       });
   }
+
 
   _renderLogIn = (userName) => {
     this.isRegistered = true;
@@ -53,7 +63,7 @@ export default class Header {
   _renderLogOut = () => {
     this.isRegistered = false;
     this._logoutButton.textContent = ' ';
-    localStorage.removeItem('name');
+    sessionStorage.removeItem('name');
     this._itemUnath.classList.remove('lists__item_is-invisible');
     this._itemsAuth.forEach(item => {
       item.classList.add('lists__item_is-invisible')
@@ -74,6 +84,8 @@ export default class Header {
             return;
           }
           this._renderLogOut();
+          this.clearArticlesList();
+          this.page.hideSections();
           // window.location.reload();
         }
       })

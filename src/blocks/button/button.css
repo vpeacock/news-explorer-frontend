@@ -20,6 +20,7 @@
   border-radius: 100px;
   box-sizing: border-box;
   cursor: pointer;
+  outline: none;
 
 }
 

@@ -3,6 +3,7 @@ import Popup from './Popup';
 export default class PopupSuccess extends Popup {
   constructor(props) {
     super(props);
+    this.page = props.page;
     this._popup = props.popup;
     this._link = this._popup.querySelector('.popup__text')
     this._openLinkPopup = props.openLinkPopup;

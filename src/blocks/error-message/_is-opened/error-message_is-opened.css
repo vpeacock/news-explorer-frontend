@@ -1,4 +1,5 @@
-.error-message_is-opened {
+.search__error-message.error-message_is-opened {
   /* opacity: 1; */
-  display: block;
+  /* display: block; */
+  visibility: visible;
 }

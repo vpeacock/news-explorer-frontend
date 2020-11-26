@@ -3,6 +3,7 @@ import Popup from './Popup';
 export default class PopupLogin extends Popup {
   constructor(props) {
     super(props);
+    this.page = props.page;
     this._popup = props.popup;
     this._api = props.api;
     this.renderHeader = props.renderHeader;
@@ -21,6 +22,8 @@ export default class PopupLogin extends Popup {
     this._link = this._form.querySelector('#register');
     this.userInfo = {};
     this.userLogoutButton = props.button;
+    this.renderArticles = props.renderArticles;
+    // this.clearArticlesList = props.clearArticlesList;
   }
 
   _signinUserForm = (event) => {
@@ -37,16 +40,28 @@ export default class PopupLogin extends Popup {
   };
 
   _authUserInfo = (data) => {
+    this.disableForm()
     this.userInfo = data;
+    // const articles = JSON.parse(sessionStorage.articles);
     this._api.signin(this.userInfo)
       .then((res) => {
-        this.renderHeader();
         this.close();
+        this.renderHeader();
+        // this.clearArticlesList();
+
+
       })
+      // .then(() => {
+      //   setTimeout(this.page.setArticleData(articles), 5000);
+      // })
       .catch((err) => {
         this._serverError.textContent = err.message
         console.log(err.message);
-      });
+      })
+      .finally(() => {
+        this.enableForm();
+        this._form.reset();
+      })
   }
 
   _checkInputValidity() {
@@ -152,7 +167,7 @@ export default class PopupLogin extends Popup {
   // }
 
   isPopupOpen = () => {
-    return this.popups.every(popup => !popup.classList.contains('popup_is-invisible'))
+    return this.popups.every(popup => !popup.classList.contains('popup_is-invisible'));
   }
 
   _setEventListeners = () => {
@@ -162,7 +177,7 @@ export default class PopupLogin extends Popup {
       input.addEventListener('blur', this._handlerInputForm, true);
     });
     this._form.addEventListener('submit', this._signinUserForm);
-    this._link.addEventListener('click', this._changePopups)
+    this._link.addEventListener('click', this._changePopups);
   }
 
   _removeEventListeners = () => {
@@ -172,11 +187,32 @@ export default class PopupLogin extends Popup {
       input.removeEventListener('blur', this._handlerInputForm, true);
     });
     this._form.removeEventListener('submit', this._signinUserForm);
-    this._link.removeEventListener('click', this._changePopups)
+    this._link.removeEventListener('click', this._changePopups);
   }
 
   _changePopups = () => {
     this.close(false);
     this._openLinkPopup();
   }
+
+  disableForm = () => {
+
+    this._inputs.forEach((input) =>
+      input.setAttribute('disabled', true)
+    );
+    // this._buttonSubmit.classList.remove('button_state_active');
+    this._buttonSubmit.classList.add('button_state_inactive');
+    this._buttonSubmit.setAttribute('disabled', true);
+  };
+
+
+  enableForm = () => {
+    this._inputs.forEach((input) =>
+      input.removeAttribute('disabled')
+    );
+    this._buttonSubmit.classList.remove('button_state_inactive');
+    // this._buttonSubmit.classList.add('button_state_active');
+    this._buttonSubmit.removeAttribute('disabled');
+  };
+
 }
