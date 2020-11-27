@@ -11,11 +11,15 @@ export default class Header {
     this.userName = '';
     this.page = props.page;
     this.clearArticlesList = props.clearArticlesList;
+    this.articles = {};
     // this._userLogout = this._userLogout.bind(this);
   }
 
   render = () => {
-    const articles = JSON.parse(sessionStorage.articles)
+    const arr = sessionStorage.articles;
+    if(arr) {
+       this.articles = JSON.parse(sessionStorage.articles);
+    }
     return this.mainApi.getUserData()
       .then((res) => {
         if (res.status === 200) {
@@ -24,7 +28,7 @@ export default class Header {
           console.log(name);
           this._renderLogIn(res.data.name);
           this.clearArticlesList();
-          this.page.setArticleData(articles);
+          this.page.setArticleData(this.articles);
 
           // window.location.reload();
           // return Promise.resolve(res.data);
