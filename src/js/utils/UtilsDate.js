@@ -10,7 +10,7 @@ export default class UtilsDate {
   }
 
   getPrevDate = () => {
-    return (new Date(this.date.getTime() - this.getDaysInMs()));
+    return (new Date(this.date.getTime() - this.getDaysInMs()).toISOString());
   }
 
   getDaysInMs = () => {
@@ -20,6 +20,11 @@ export default class UtilsDate {
   // getDateString = () => {
   //   return `${this.date.toLocaleString('ru', { day: 'numeric', month: 'long' })}, ${this.year}`;
   // }
+
+  getCurrentDate = () => {
+    return this.date.toISOString();
+
+  }
 
   formatDate = () => {
     if (this.day < 10) {

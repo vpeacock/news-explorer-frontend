@@ -1,4 +1,15 @@
-.article__link {
+/* .article__link {
   text-decoration: none;
   color: #B6BCBF;
+} */
+.article__link {
+  text-decoration: none;
+  color: #b6bcbf;
+  color: #b6bcbf;
+  text-transform: uppercase;
+  background: transparent;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 8px;
+  flex: 0 0 auto;
 }

@@ -1,4 +1,5 @@
 .article__text {
   margin: 0 0 5px 0;
   line-height: 22px;
+  flex: 1 0 auto;
 }

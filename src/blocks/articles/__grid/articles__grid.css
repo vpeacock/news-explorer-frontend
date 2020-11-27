@@ -1,11 +1,24 @@
 .articles__grid {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, 288px);;
-  grid-row-gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(288px, 380px));
+  grid-gap: 10px;
   padding: 0;
   margin: 0;
   list-style: none;
-  grid-column-gap: 20px;
   align-self: stretch;
+}
+
+
+@media screen and (min-width: 768px) {
+  .articles__grid {
+    grid-template-columns: repeat(3, minmax(224px, 400px));
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .articles__grid {
+    grid-gap: 16px;
+    margin-bottom: 70px;
+  }
 }

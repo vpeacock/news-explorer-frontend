@@ -2,5 +2,53 @@
   text-decoration: none;
   color: black;
    z-index: 1;
-   
+   display: grid;
+   border-radius: 16px;
+   position: relative;
+   background-color: #fff;
+   grid-template-rows: 196px 1fr;
+   height: 100%;
+
+}
+
+@media screen and (min-width: 360px) {
+  .link-container {
+    grid-template-rows: 210px 1fr;
+  }
+}
+
+@media screen and (min-width: 380px) {
+  .link-container {
+    grid-template-rows: 230px 1fr;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .link-container {
+    grid-template-rows: 250px 1fr;
+  }
+}
+
+@media screen and (min-width: 432px) {
+  .link-container {
+    grid-template-rows: 272px 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .link-container {
+    grid-template-rows: 150px 1fr;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .link-container {
+    grid-template-rows: 180px 1fr;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .link-container {
+    grid-template-rows: 210px 1fr;
+  }
 }
