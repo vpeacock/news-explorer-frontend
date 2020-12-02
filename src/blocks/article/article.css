@@ -14,8 +14,10 @@
 }
 
 .article:hover {
-  top: -2px;
+  top: -3px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+
 }
 
 

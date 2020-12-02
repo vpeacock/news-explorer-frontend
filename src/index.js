@@ -8,18 +8,20 @@ import {
 
 
 import {
-  popupSignupDE, popupLoginDE, popupSuccessfulSignupDE,
-  authButton, loginLink, registerLink, enterButtonDE, userLogoutButton,
-  itemUnath, itemsAuth,
+
   popupAuthButton, popupRegisterButton,
-  formSignup, formEnter, formSearch,
+  formSignup, formEnter,
   emailInputSignup, passwordInputSignup, nameCheckSignup,
   emailLoginAuth, loginPasswordAuth,
-  overlay, buttonBurger, page, nav, buttonCloseMenu, popupButtonClose,
+  page, nav, buttonCloseMenu, popupButtonClose,
   overlayPopup,
   navMain, navArticles, navAuthorization, navUserName, buttonIcon,
-  navMenuMobile, mobileMenuClose, popups, articlesContainer,articlesMore,
-  messagePreloader, messageNotFound, messageServerError, articlesSection,
+
+  popupSignupDE, popupLoginDE, popupSuccessfulSignupDE, formSearch, overlay,
+  buttonBurger, authButton, loginLink, registerLink, enterButtonDE, userLogoutButton,
+  itemUnath, itemsAuth, navMenuMobile, mobileMenuClose, popups, articlesContainer,
+  articlesMore, messagePreloader, messageNotFound, messageServerError, articlesSection,
+  headerLogo
 } from './js/constants/constantsDomElements';
 
 import VALIDATION_HINT_MESSAGES from "./js/constants/errors-messages";
@@ -63,14 +65,12 @@ import Page from "./js/components/Page";
   }
 
   const renderArticles = (articles, keyword) => {
-    console.log(keyword);
     instArticlesList.render(articles, keyword);
 
   }
 
   const cbCreateCard = (props) => {
-    console.log(props);
-    return new Articles(props);
+    return new Articles(props).render();
   }
 
 
@@ -79,8 +79,8 @@ import Page from "./js/components/Page";
   }
 
   //Instancies ======================================================>
-  const mainApi = new MainApi({options: MAIN_API_OPTIONS});
-  const newsApi = new NewsApi({options: NEWS_API_OPTIONS});
+  const mainApi = new MainApi({ options: MAIN_API_OPTIONS });
+  const newsApi = new NewsApi({ options: NEWS_API_OPTIONS });
 
   //const formSignupValidator = new FormValidator(formSignup, VALIDATION_HINT_MESSAGES);
   // const formEnterValidator = new FormValidator(formEnter, VALIDATION_HINT_MESSAGES);
@@ -92,6 +92,8 @@ import Page from "./js/components/Page";
     preloader: messagePreloader,
     button: articlesMore,
     renderArticles: renderArticles,
+    clearArticlesList: clearArticlesList,
+    path: MAIN_BY_PATH,
   })
 
   const instPopupSuccess = new PopupSuccess({
@@ -153,6 +155,8 @@ import Page from "./js/components/Page";
     buttonClose: mobileMenuClose,
     page: instPage,
     overlay: overlay,
+    path: MAIN_BY_PATH,
+    logo: headerLogo,
   })
 
   // const instArticles = new Articles(props)
@@ -161,6 +165,7 @@ import Page from "./js/components/Page";
     cbCreateCard: cbCreateCard,
     container: articlesContainer,
     api: mainApi,
+    path: MAIN_BY_PATH,
   })
 
   const instSearchForm = new Search({
@@ -275,7 +280,7 @@ import Page from "./js/components/Page";
 
   // articlesMore.addEventListener('click', instSearchForm.slicingArray)
 
-    instHeader.render();
-    instSearchForm.setEventListener();
+  instHeader.render();
+  instSearchForm.setEventListener();
 
-  })()
+})()

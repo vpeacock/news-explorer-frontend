@@ -9,8 +9,6 @@
 
 .nav {
   display: none;
-  width: 100%;
-
 }
 
 @media screen and (min-width: 620px) {

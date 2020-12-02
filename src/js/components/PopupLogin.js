@@ -45,7 +45,7 @@ export default class PopupLogin extends Popup {
     // const articles = JSON.parse(sessionStorage.articles);
     this._api.signin(this.userInfo)
       .then((res) => {
-        this.close();
+        this.close(true);
         this.renderHeader();
         // this.clearArticlesList();
 

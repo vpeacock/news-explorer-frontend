@@ -1,19 +1,13 @@
 import UtilsDate from "../utils/UtilsDate";
-import {imgUrl} from "../constants/constants";
+import { IMG_URL } from "../constants/constants";
 
 export default class Articles {
 
   constructor(props) {
-    console.log(props);
     this.data = props.data;
     this.keyword = props.keyword;
-    this.link = props.data.urlToImage || imgUrl;
-    this.url = props.data.url;
-    this.date = props.data.publishedAt;
-    this.title = props.data.title;
-    this.text = props.data.description;
-    this.source = props.data.source.name;
     this.api = props.api;
+    this.path = props.path;
 
   }
 
@@ -21,7 +15,7 @@ export default class Articles {
     const markup =
       `<span class="article__keyword article__keyword_is-invisible"></span>
     <div class="article__button-container">
-      <button class="article__button article__button_type_bookmark"><span class="article__tooltip-text">
+      <button class="article__button"><span class="article__tooltip-text">
           Войдите, чтобы сохранить статьи</span></button>
     </div>
     <a href="" target="_blank" class="link-container">
@@ -47,21 +41,45 @@ export default class Articles {
   render = () => {
     this.card = this.create();
     this.card.querySelector('.article__keyword').textContent = this.keyword;
-    this.card.querySelector('.link-container').setAttribute('href', this.url);
+    this.card.querySelector('.link-container').setAttribute('href', this.data.url);
+    this.link = this.data.urlToImage || IMG_URL;
     this.card.querySelector('.article__image').setAttribute('src', this.link);
-    this.card.querySelector('.article__date').setAttribute('datetime', this.date);
-    this.card.querySelector('.article__date').textContent = new UtilsDate({ date: new Date() }).formatDate(this.date);
-    this.card.querySelector('.article__title').textContent = this.title;
-    this.card.querySelector('.article__text').textContent = this.text;
-    this.card.querySelector('.article__link').textContent = this.source;
+    this.card.querySelector('.article__date').setAttribute('datetime', this.data.publishedAt);
+    this.card.querySelector('.article__date').textContent = new UtilsDate({ date: new Date() }).formatDate(this.data.publishedAt);
+    this.card.querySelector('.article__title').textContent = this.data.title;
+    this.card.querySelector('.article__text').textContent = this.data.description;
+    this.card.querySelector('.article__link').textContent = this.data.source.name;
+    this.card.querySelector('.article__button').classList.add('article__button_type_bookmark');
+    this.card.querySelector('.article__tooltip-text').textContent = 'Войдите, чтобы сохранить статьи';
 
-    console.log('я тут');
-    console.log(sessionStorage.getItem('name'));
     const name = sessionStorage.getItem('name');
     if (name) {
       this.setEventListeners();
       this.card.querySelector('.article__tooltip-text').classList.add('article__tooltip-text_is-invisible')
     }
+    return this.card;
+  }
+
+
+  renderSaveArticles = () => {
+    this.card = this.create();
+    this.card.querySelector('.article__keyword').textContent = this.data.keyword;
+    this.card.querySelector('.link-container').setAttribute('href', this.data.url);
+    this.link = this.data.image || IMG_URL;
+    this.card.querySelector('.article__image').setAttribute('src', this.link);
+    this.card.querySelector('.article__date').setAttribute('datetime', this.data.publishedAt);
+    this.card.querySelector('.article__date').textContent = new UtilsDate({ date: new Date() }).formatDate(this.data.publishedAt);
+    this.card.querySelector('.article__title').textContent = this.data.title;
+    this.card.querySelector('.article__text').textContent = this.data.text;
+    this.card.querySelector('.article__link').textContent = this.data.source;
+    this.card.querySelector('.article__button').classList.add('article__button_type_trash');
+    this.card.querySelector('.article__tooltip-text').textContent = 'Убрать из сохранённых';
+    this.card.querySelector('.article__keyword').classList.remove('article__keyword_is-invisible');
+    this.card.setAttribute('id', this.data._id);
+
+    this.setEventListeners();
+
+
     return this.card;
   }
 
@@ -105,18 +123,17 @@ export default class Articles {
 
   removeEventListeners = () => {
     const icon = this.card.querySelector('.article__button');
-    this.addArticle = this.addToDatabaseHandler(this.data, this.keyword);
-    icon.addEventListener('click', this.addArticle);
+
+
+    icon.removeEventListener('click', this.clickHandler);
 
 
   }
 
-  // addToDatabaseHandler = (data, keyword, api) => function addToDatabase() {
+
   addToDatabase = () => {
-    console.log(this.api);
-    console.log(this.data);
     const cardInfo = {
-      keyword: this.keyword.keyword,
+      keyword: this.keyword,
       text: this.data.description,
       title: this.data.title,
       date: this.data.publishedAt,
@@ -124,13 +141,12 @@ export default class Articles {
       link: this.data.url,
       image: this.link,
     }
-    console.log(cardInfo);
+
     this.api.createArticle(cardInfo)
       .then((res) => {
         const articleId = res.data._id;
         this.card.setAttribute('id', articleId);
         this.changeClass(true);
-        console.log(res);
       })
       .catch((err) => {
         const error = err.validation.message || err.message
@@ -150,17 +166,19 @@ export default class Articles {
   }
 
   removeFromDatabase = () => {
-    console.log(this.card.id);
     const articleId = this.card.id;
     this.api.removeArticle(articleId)
-    .then((res) => {
-      console.log(res);
-      this.card.removeAttribute('id');
-      this.changeClass(false);
-      console.log(this.card);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+      .then((res) => {
+        if (window.location.pathname !== this.mainPath) {
+          this.remove()
+          return
+        }
+        this.card.removeAttribute('id');
+        this.changeClass(false);
+
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 }

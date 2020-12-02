@@ -6,10 +6,16 @@ export default class MenuMobile {
     this.buttonClose = props.buttonClose;
     this.page = props.page;
     this.overlay = props.overlay;
+    this.mainPath = props.path;
+    this.logo = props.logo;
 
   }
 
   open = () => {
+    if(window.location.pathname !== this.mainPath){
+      this.logo.classList.remove('logo_color_black');
+      this.logo.classList.add('logo_color_white');
+    }
     this.menu.classList.add('nav_is-visible');
     this.buttonBurger.classList.add('button-burger_is-invisible');
     this.buttonClose.classList.add('button-close_is-visible');
@@ -21,6 +27,10 @@ export default class MenuMobile {
   }
 
   close = (flag) => {
+    if(window.location.pathname !== this.mainPath){
+      this.logo.classList.add('logo_color_black');
+      this.logo.classList.remove('logo_color_white');
+    }
     this.menu.classList.remove('nav_is-visible');
     if (flag) {
       this.buttonBurger.classList.remove('button-burger_is-invisible');

@@ -10,11 +10,11 @@
 }
 
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .articles__grid {
     grid-template-columns: repeat(3, minmax(224px, 400px));
   }
-}
+} */
 
 @media screen and (min-width: 980px) {
   .articles__grid {

@@ -11,11 +11,11 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: {
     main: './src/index.js',
-    articles: './src/articles.js'
+    articles: './src/articles/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: './[name]/index.[chunkhash].js'
   },
 
   module: {
@@ -92,7 +92,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './styles/[name].[contenthash].css'
+      filename: 'styles/[name].[contenthash].css'
 
     }),
     new OptimizeCssAssetsPlugin({

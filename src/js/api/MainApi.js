@@ -10,8 +10,8 @@ export default class MainApi {
       headers: this.options.headers,
       body: JSON.stringify({ email, password, name, }),
     })
-    .then((res) => this.requestHandler(res)
-    .then((data) => ({ status: res.status, data })))
+      .then((res) => this.requestHandler(res)
+        .then((data) => ({ status: res.status, data })))
 
   }
 

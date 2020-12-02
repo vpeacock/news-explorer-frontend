@@ -1,5 +1,13 @@
 .button_color_light {
-  background-color: transparent;
-  color: #1A1B22;
-  border: 2px solid #1A1B22;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+@media screen and (min-width: 620px) {
+  .button_color_light {
+    color: #1a1b22;
+    border: 2px solid #1a1b22;
+
+  }
 }

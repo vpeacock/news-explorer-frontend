@@ -17,7 +17,7 @@ export default class Search {
 
   _searchArticles = (event) => {
     event.preventDefault();
-    const flag = this.input.value;
+    const flag = this.input.value.trim();
     if (flag === "") {
       this.showErrorMessage();
       return
@@ -27,7 +27,6 @@ export default class Search {
     }
     this._getArticles({
       keyword: this.input.value,
-
     });
   };
 
@@ -49,7 +48,7 @@ export default class Search {
     this.userInfo = keyword;
     this._api.getNews(this.userInfo)
       .then((res) => {
-        console.log(res.articles);
+        
         this.page.processingResults(res.articles, keyword);
       })
 

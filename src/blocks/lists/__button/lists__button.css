@@ -1,3 +1,5 @@
-.button.lists__button {
+@media screen and (max-width: 619px) {
+  .button.lists__button {
   width: 100%;
+}
 }

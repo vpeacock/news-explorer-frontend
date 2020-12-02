@@ -1,4 +1,4 @@
-import {months} from "../constants/constants";
+import {MONTHS} from "../constants/constants";
 
 export default class UtilsDate {
   constructor(props){
@@ -34,6 +34,6 @@ export default class UtilsDate {
       this.month = `0${this.month}`;
     }
 
-    return `${this.day} ${months[this.month]}, ${this.year}`;
+    return `${this.day} ${MONTHS[this.month]}, ${this.year}`;
   }
 }

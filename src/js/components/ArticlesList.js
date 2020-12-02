@@ -3,7 +3,7 @@ export default class ArticlesList {
     this.container = props.container;
     this.cbCreateCard = props.cbCreateCard;
     this.api = props.api;
-
+    this.path = props.MAIN_BY_PATH
   }
 
   render = (cards, keyword) => {
@@ -13,10 +13,8 @@ export default class ArticlesList {
     });
   }
 
-
-
   addCard = (data, keyword) => {
-   
+
     this.container.appendChild(this.cbCreateCard({
       data: data,
       // urlToImage: data.urlToImage,
@@ -26,22 +24,17 @@ export default class ArticlesList {
       // description: data.description,
       // source: data.source,
       keyword: keyword,
+      path: this.path,
       api: this.api,
-    }).render());
+    }));
   }
 
   clear = () => {
     const articles = [...this.container.querySelectorAll('.article')];
-    articles.forEach((article) => {
-      this.removeCard(article);
-    });
+    if (articles.length !== 0) {
+      articles.forEach((article) => {
+        article.remove();
+      });
+    }
   }
-
-  removeCard = (article) => {
-    // console.log(getEventListeners(article)['click'][0]['listener']);
-    // article.removeEventListener('click', getEventListeners(article)['click'][0]['listener']))
-    article.remove();
-  }
-
-
 }

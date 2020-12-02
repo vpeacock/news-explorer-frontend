@@ -1,4 +1,4 @@
-import {COUNT_NEWS} from "../constants/constants";
+import { COUNT_NEWS } from "../constants/constants";
 
 export default class Page {
   constructor(props) {
@@ -6,9 +6,12 @@ export default class Page {
     this.notFound = props.messageNotFound;
     this.articlesSection = props.articlesSection;
     this.renderArticles = props.renderArticles;
+    this.clearArticlesList = props.clearArticlesList,
     this.preloader = props.preloader;
     this.button = props.button;
     this.page = document.querySelector('.page');
+    this.api = props.api;
+    this.mainPath = props.path;
 
   }
 
@@ -51,13 +54,15 @@ export default class Page {
   processingResults = (articles, keyword) => {
     const length = articles.length;
     sessionStorage.articles = JSON.stringify(articles);
-    sessionStorage.keyword = JSON.stringify(keyword);
+    if (keyword) {
+      sessionStorage.keyword = JSON.stringify(keyword);
+    }
     if (length === 0) {
       this.showSection(this.notFound)
       return
     }
     this.showSection(this.articlesSection);
-    if (length > 3) {
+    if (window.location.pathname === this.mainPath && length > 3) {
       this.showButton();
       this.button.addEventListener('click', this.slicingArray)
     }
@@ -65,22 +70,42 @@ export default class Page {
   }
 
   setArticleData = (articles) => {
-    this.articles = articles;
-    this.keyword = JSON.parse(sessionStorage.keyword);
-    this.slicingArray();
+    if (!articles) {
+      return
+    } this.articles = articles;
+
+    const keyword = sessionStorage.keyword;
+    if (keyword) {
+      this.keyword = JSON.parse(keyword).keyword;
+    }
+
+    if (window.location.pathname === this.mainPath) {
+      this.slicingArray();
+      return
+    } this.renderArticles(this.articles)
+
   }
 
   slicingArray = () => {
-    console.log(this.articles);
-
-    const blockArticles = this.articles.splice(0, COUNT_NEWS);
-
-    this.renderArticles(blockArticles, this.keyword);
-    if (this.articles.length === 0) {
-      this.button.removeEventListener('click', this.slicingArray)
-      this.hideButton();
+    if (Object.keys(this.articles).length !== 0) {
+      const blockArticles = this.articles.splice(0, COUNT_NEWS);
+      this.renderArticles(blockArticles, this.keyword);
+      if (this.articles.length === 0) {
+        this.button.removeEventListener('click', this.slicingArray)
+        this.hideButton();
+      }
     }
-    console.log(this.articles.length);
+  }
+
+  getArticles = () => {
+    return this.api.getArticles()
+      .then((res) => {
+        this.processingResults(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
   }
 
 }

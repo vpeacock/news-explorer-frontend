@@ -1,3 +1,11 @@
 .button__icon_location_articles {
-  background-image: url('../../../../images/logout_black.svg');
+  background-image: url('../../../../images/logout_white.svg');
+}
+
+
+@media screen and (min-width: 620px) {
+  .button__icon_location_articles {
+    background-image: url('../../../../images/logout_black.svg');
+
+  }
 }

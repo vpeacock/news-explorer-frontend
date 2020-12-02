@@ -1,3 +1,7 @@
-.nav__link.nav__link_black {
-  color: #1A1B22;
+
+
+@media screen and (min-width: 620px) {
+  .nav__link.nav__link_black {
+    color: #1a1b22;
+  }
 }

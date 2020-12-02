@@ -17,25 +17,28 @@ export default class Header {
 
   render = () => {
     const arr = sessionStorage.articles;
-    if(arr) {
-       this.articles = JSON.parse(sessionStorage.articles);
+    if (arr) {
+      this.articles = JSON.parse(sessionStorage.articles);
     }
     return this.mainApi.getUserData()
       .then((res) => {
-        if (res.status === 200) {
-          sessionStorage.name = res.data.name;
-          const name = sessionStorage.getItem('name');
-          console.log(name);
-          this._renderLogIn(res.data.name);
-          this.clearArticlesList();
-          this.page.setArticleData(this.articles);
-
-          // window.location.reload();
-          // return Promise.resolve(res.data);
-
+        sessionStorage.name = res.data.name;
+        if (window.location.pathname !== this.mainPath) {
+          this.setButtonName(res.data.name);
+          this._logoutButton.addEventListener('click', this._userLogout);
+          return
         }
+
+
+        this._renderLogIn(res.data.name);
+        this.clearArticlesList();
+        this.page.setArticleData(this.articles);
+
+
+
       })
       .catch((err) => {
+
         console.log(err.message);
         if (window.location.pathname !== this.mainPath) {
           window.location.replace(this.mainPath);
@@ -45,11 +48,16 @@ export default class Header {
       });
   }
 
+  setButtonName = (name) => {
+    this._logoutButton.querySelector('.button__name').textContent = name;
+    // this._logoutButton.textContent = name;
+  }
+
 
   _renderLogIn = (userName) => {
     this.isRegistered = true;
     this._itemUnath.classList.add('lists__item_is-invisible');
-    this._logoutButton.textContent = userName;
+    this.setButtonName(userName);
     this._itemsAuth.forEach(item => {
       item.classList.remove('lists__item_is-invisible')
     });
@@ -66,7 +74,7 @@ export default class Header {
 
   _renderLogOut = () => {
     this.isRegistered = false;
-    this._logoutButton.textContent = ' ';
+    this._logoutButton.querySelector('.button__name').textContent = "";
     sessionStorage.removeItem('name');
     this._itemUnath.classList.remove('lists__item_is-invisible');
     this._itemsAuth.forEach(item => {
