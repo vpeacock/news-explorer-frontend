@@ -20,16 +20,7 @@ export const navLinkSavedArticles = document.querySelector('.nav__link_saved-art
 
 
 
-
-
-
-
-
 //**Page**
-
-
-
-// **Header**
 export const headerLogo = document.querySelector('.header__logo');
 export const navLinkMain = document.querySelector('.nav__link_main');
 export const linkActiveWhite = document.querySelector('.link__active-white');

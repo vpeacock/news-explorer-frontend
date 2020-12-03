@@ -1,36 +1,29 @@
 export default class ArticlesList {
   constructor(props) {
-    this.container = props.container;
+    this._container = props.container;
     this.cbCreateCard = props.cbCreateCard;
-    this.api = props.api;
-    this.path = props.MAIN_BY_PATH
+    this._api = props.api;
+    this._path = props.path;
   }
 
   render = (cards, keyword) => {
     this.cards = cards;
     this.cards.forEach(item => {
-      this.addCard(item, keyword);
+      this._addCard(item, keyword);
     });
   }
 
-  addCard = (data, keyword) => {
-
-    this.container.appendChild(this.cbCreateCard({
+  _addCard = (data, keyword) => {
+    this._container.appendChild(this.cbCreateCard({
       data: data,
-      // urlToImage: data.urlToImage,
-      // url: data.url,
-      // publishedAt: data.publishedAt,
-      // title: data.title,
-      // description: data.description,
-      // source: data.source,
       keyword: keyword,
-      path: this.path,
-      api: this.api,
+      path: this._path,
+      api: this._api,
     }));
   }
 
   clear = () => {
-    const articles = [...this.container.querySelectorAll('.article')];
+    const articles = [...this._container.querySelectorAll('.article')];
     if (articles.length !== 0) {
       articles.forEach((article) => {
         article.remove();

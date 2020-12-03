@@ -2,16 +2,15 @@ import UtilsDate from "../utils/UtilsDate";
 import { IMG_URL } from "../constants/constants";
 
 export default class Articles {
-
   constructor(props) {
-    this.data = props.data;
-    this.keyword = props.keyword;
-    this.api = props.api;
-    this.path = props.path;
+    this._data = props.data;
+    this._keyword = props.keyword;
+    this._api = props.api;
+    this._path = props.path;
 
   }
 
-  create = () => {
+  _create = () => {
     const markup =
       `<span class="article__keyword article__keyword_is-invisible"></span>
     <div class="article__button-container">
@@ -30,31 +29,28 @@ export default class Articles {
     </a>`;
 
     const element = document.createElement('li');
-
     element.classList.add('article');
-    // element.setAttribute('id','');
     element.insertAdjacentHTML('beforeend', markup.trim());
-
     return element;
   }
 
   render = () => {
-    this.card = this.create();
-    this.card.querySelector('.article__keyword').textContent = this.keyword;
-    this.card.querySelector('.link-container').setAttribute('href', this.data.url);
-    this.link = this.data.urlToImage || IMG_URL;
+    this.card = this._create();
+    this.card.querySelector('.article__keyword').textContent = this._keyword;
+    this.card.querySelector('.link-container').setAttribute('href', this._data.url);
+    this.link = this._data.urlToImage || IMG_URL;
     this.card.querySelector('.article__image').setAttribute('src', this.link);
-    this.card.querySelector('.article__date').setAttribute('datetime', this.data.publishedAt);
-    this.card.querySelector('.article__date').textContent = new UtilsDate({ date: new Date() }).formatDate(this.data.publishedAt);
-    this.card.querySelector('.article__title').textContent = this.data.title;
-    this.card.querySelector('.article__text').textContent = this.data.description;
-    this.card.querySelector('.article__link').textContent = this.data.source.name;
+    this.card.querySelector('.article__date').setAttribute('datetime', this._data.publishedAt);
+    this.card.querySelector('.article__date').textContent = new UtilsDate({ date: new Date() }).formatDate(this._data.publishedAt);
+    this.card.querySelector('.article__title').textContent = this._data.title;
+    this.card.querySelector('.article__text').textContent = this._data.description;
+    this.card.querySelector('.article__link').textContent = this._data.source.name;
     this.card.querySelector('.article__button').classList.add('article__button_type_bookmark');
     this.card.querySelector('.article__tooltip-text').textContent = 'Войдите, чтобы сохранить статьи';
 
     const name = sessionStorage.getItem('name');
     if (name) {
-      this.setEventListeners();
+      this._setEventListeners();
       this.card.querySelector('.article__tooltip-text').classList.add('article__tooltip-text_is-invisible')
     }
     return this.card;
@@ -62,91 +58,77 @@ export default class Articles {
 
 
   renderSaveArticles = () => {
-    this.card = this.create();
-    this.card.querySelector('.article__keyword').textContent = this.data.keyword;
-    this.card.querySelector('.link-container').setAttribute('href', this.data.url);
-    this.link = this.data.image || IMG_URL;
+    this.card = this._create();
+    this.card.querySelector('.article__keyword').textContent = this._data.keyword;
+    this.card.querySelector('.link-container').setAttribute('href', this._data.url);
+    this.link = this._data.image || IMG_URL;
     this.card.querySelector('.article__image').setAttribute('src', this.link);
-    this.card.querySelector('.article__date').setAttribute('datetime', this.data.publishedAt);
-    this.card.querySelector('.article__date').textContent = new UtilsDate({ date: new Date() }).formatDate(this.data.publishedAt);
-    this.card.querySelector('.article__title').textContent = this.data.title;
-    this.card.querySelector('.article__text').textContent = this.data.text;
-    this.card.querySelector('.article__link').textContent = this.data.source;
+    this.card.querySelector('.article__date').setAttribute('datetime', this._data.publishedAt);
+    this.card.querySelector('.article__date').textContent = new UtilsDate({ date: new Date() }).formatDate(this._data.publishedAt);
+    this.card.querySelector('.article__title').textContent = this._data.title;
+    this.card.querySelector('.article__text').textContent = this._data.text;
+    this.card.querySelector('.article__link').textContent = this._data.source;
     this.card.querySelector('.article__button').classList.add('article__button_type_trash');
     this.card.querySelector('.article__tooltip-text').textContent = 'Убрать из сохранённых';
     this.card.querySelector('.article__keyword').classList.remove('article__keyword_is-invisible');
-    this.card.setAttribute('id', this.data._id);
-
-    this.setEventListeners();
-
-
+    this.card.setAttribute('id', this._data._id);
+    this._setEventListeners();
     return this.card;
   }
 
-  // saved = () => {
-  //   this.card.querySelector('.article__button').classList.toggle('place-card__like-icon_liked');
-  // }
-
-  saved(articleId, flag) {
+  _saved(articleId, flag) {
     const icon = this.card.querySelector('.article__button');
-
     if (flag) {
-      this.removeArticle = this.removeFromDatabase(articleId, this.data);
+      this.removeArticle = this._removeFromDatabase(articleId, this._data);
       icon.addEventListener('click', this.removeArticle);
     } else {
-      this.addArticle = this.addToDatabase();
+      this.addArticle = this._addToDatabase();
       icon.addEventListener('click', this.addArticle);
     }
   }
 
   remove = () => {
-    this.removeEventListeners();
+    this._removeEventListeners();
     this.card.remove();
     this.card = null;
   }
 
-  clickHandler = (event) => {
+  _clickHandler = (event) => {
     if (event.target.classList.contains('article__button_type_bookmark')) {
-      this.addToDatabase();
+      this._addToDatabase();
     } else {
-      this.removeFromDatabase();
+      this._removeFromDatabase();
     }
   }
 
-  setEventListeners = () => {
+  _setEventListeners = () => {
     const icon = this.card.querySelector('.article__button');
-    // this.addArticle = this.addToDatabaseHandler(this.data, this.keyword, this.api);
-    // icon.addEventListener('click', this.addArticle);
-    icon.addEventListener('click', this.clickHandler);
+    icon.addEventListener('click', this._clickHandler);
 
   }
 
-  removeEventListeners = () => {
+  _removeEventListeners = () => {
     const icon = this.card.querySelector('.article__button');
-
-
-    icon.removeEventListener('click', this.clickHandler);
-
-
+    icon.removeEventListener('click', this._clickHandler);
   }
 
 
-  addToDatabase = () => {
+  _addToDatabase = () => {
     const cardInfo = {
-      keyword: this.keyword,
-      text: this.data.description,
-      title: this.data.title,
-      date: this.data.publishedAt,
-      source: this.data.source.name,
-      link: this.data.url,
+      keyword: this._keyword,
+      text: this._data.description,
+      title: this._data.title,
+      date: this._data.publishedAt,
+      source: this._data.source.name,
+      link: this._data.url,
       image: this.link,
     }
 
-    this.api.createArticle(cardInfo)
+    this._api.createArticle(cardInfo)
       .then((res) => {
         const articleId = res.data._id;
         this.card.setAttribute('id', articleId);
-        this.changeClass(true);
+        this._changeClass(true);
       })
       .catch((err) => {
         const error = err.validation.message || err.message
@@ -154,7 +136,7 @@ export default class Articles {
       })
   }
 
-  changeClass = (flag) => {
+  _changeClass = (flag) => {
     const icon = this.card.querySelector('.article__button');
     if (flag) {
       icon.classList.remove('article__button_type_bookmark');
@@ -165,16 +147,16 @@ export default class Articles {
     }
   }
 
-  removeFromDatabase = () => {
+  _removeFromDatabase = () => {
     const articleId = this.card.id;
-    this.api.removeArticle(articleId)
+    this._api.removeArticle(articleId)
       .then((res) => {
-        if (window.location.pathname !== this.mainPath) {
+        if (window.location.pathname !== this._path) {
           this.remove()
           return
         }
         this.card.removeAttribute('id');
-        this.changeClass(false);
+        this._changeClass(false);
 
       })
       .catch((err) => {

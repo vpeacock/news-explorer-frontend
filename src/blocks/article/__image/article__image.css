@@ -1,12 +1,5 @@
-/* .article__image {
-  border-radius: 16px 16px 0 0;
-  position: relative;
-  max-width: 100%;
-
-} */
 
 .article__image {
-
     position: relative;
     max-width: 400px;
     width: 100%;
@@ -15,6 +8,4 @@
     border-top-right-radius: 15px;
     object-position: center;
     object-fit: fill;
-
-
 }

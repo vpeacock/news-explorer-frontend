@@ -12,7 +12,6 @@ export default class Header {
     this.page = props.page;
     this.clearArticlesList = props.clearArticlesList;
     this.articles = {};
-    // this._userLogout = this._userLogout.bind(this);
   }
 
   render = () => {
@@ -28,29 +27,21 @@ export default class Header {
           this._logoutButton.addEventListener('click', this._userLogout);
           return
         }
-
-
         this._renderLogIn(res.data.name);
         this.clearArticlesList();
         this.page.setArticleData(this.articles);
-
-
-
       })
       .catch((err) => {
-
         console.log(err.message);
         if (window.location.pathname !== this.mainPath) {
           window.location.replace(this.mainPath);
         }
         return this._renderLogOut();
-
       });
   }
 
   setButtonName = (name) => {
     this._logoutButton.querySelector('.button__name').textContent = name;
-    // this._logoutButton.textContent = name;
   }
 
 
@@ -65,11 +56,6 @@ export default class Header {
       this._instPopupLog.open();
     });
     this._logoutButton.addEventListener('click', this._userLogout);
-
-    //снять слушатель с кнопки authButton
-    // повесить слушатель на кнопку logoutButton
-
-
   }
 
   _renderLogOut = () => {
@@ -84,7 +70,6 @@ export default class Header {
       this._instPopupLog.open();
     });
     this._logoutButton.removeEventListener('click', this._userLogout);
-
   }
 
   _userLogout = () => {
@@ -98,7 +83,6 @@ export default class Header {
           this._renderLogOut();
           this.clearArticlesList();
           this.page.hideSections();
-          // window.location.reload();
         }
       })
       .catch((err) => {
@@ -106,13 +90,4 @@ export default class Header {
 
       });
   }
-
-
-  // authSignupButton.setEventListener('click', () => {
-  //   // formEnterValidator.clearErrors();
-  //   // formEnterValidator.setSubmitButtonState(false);
-  //   this._instPopupLog.open();
-  // });
-
-
 }

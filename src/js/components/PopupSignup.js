@@ -8,10 +8,9 @@ export default class PopupSignup extends Popup {
     this._serverError = this._popup.querySelector('.error-message_center');
     this._openLinkPopup = props.openLinkPopup;
     this._openSuccess = props.openSuccessPopup;
-    this.buttonBurger = props.buttonBurger;
-    this.popups = props.popups;
-    //  this._popupSuccess = props.popupSuccess;
-    this.VALIDATION_HINT_MESSAGES = props.messages;
+    this._buttonBurger = props.buttonBurger;
+    this._popups = props.popups;
+    this._VALIDATION_HINT_MESSAGES = props.messages;
     this._form = this._popup.querySelector('.popup__form');
     this._inputs = [...this._form.querySelectorAll('input')];
     this._emailInput = this._form.querySelector('#email-signup');
@@ -19,11 +18,9 @@ export default class PopupSignup extends Popup {
     this._nameCheck = this._form.querySelector('#name-check-signup');
     this._buttonSubmit = this._form.querySelector('.button');
     this._link = this._form.querySelector('#login');
-    this.userInfo = {};
-    this.page = props.page;
+    this._userInfo = {};
+    this._page = props.page;
   }
-
-
 
   _signupUserForm = (event) => {
     event.preventDefault();
@@ -33,15 +30,13 @@ export default class PopupSignup extends Popup {
         password: this._passwordInput.value,
         name: this._nameCheck.value
       });
-      // this.close();
-      // this._popupSuccess.open();
     }
   };
 
   _regUserInfo = (data) => {
-    this.disableForm();
-    this.userInfo = data;
-    this._api.signup(this.userInfo)
+    this._disableForm();
+    this._userInfo = data;
+    this._api.signup(this._userInfo)
       .then((data) => {
         this.close();
         this._openSuccess();
@@ -51,7 +46,7 @@ export default class PopupSignup extends Popup {
         console.log(err.message);
       })
       .finally(() => {
-        this.enableForm();
+        this._enableForm();
         this._form.reset();
       })
   }
@@ -69,22 +64,22 @@ export default class PopupSignup extends Popup {
   _isValidate = (input) => {
     input.setCustomValidity('');
     if (input.validity.valueMissing) {
-      input.setCustomValidity(this.VALIDATION_HINT_MESSAGES.requiredField);
+      input.setCustomValidity(this._VALIDATION_HINT_MESSAGES.requiredField);
       return false;
     }
 
     if (input.name === 'email' && input.validity.patternMismatch) {
-      input.setCustomValidity(this.VALIDATION_HINT_MESSAGES.InvalidEmail);
+      input.setCustomValidity(this._VALIDATION_HINT_MESSAGES.InvalidEmail);
       return false;
     }
 
     if (input.validity.tooShort || input.validity.tooLong) {
       if (input.type === 'text') {
-        input.setCustomValidity(this.VALIDATION_HINT_MESSAGES.NameLengthError);
+        input.setCustomValidity(this._VALIDATION_HINT_MESSAGES.NameLengthError);
         return false;
       }
       else if (input.name === 'password') {
-        input.setCustomValidity(this.VALIDATION_HINT_MESSAGES.PasswordLengthError);
+        input.setCustomValidity(this._VALIDATION_HINT_MESSAGES.PasswordLengthError);
         return false;
       }
 
@@ -138,15 +133,15 @@ export default class PopupSignup extends Popup {
   }
 
   close = (flag) => {
-    if (this.buttonBurger.classList.contains('button-burger_is-invisible') && flag) {
-      this.buttonBurger.classList.remove('button-burger_is-invisible')
+    if (this._buttonBurger.classList.contains('button-burger_is-invisible') && flag) {
+      this._buttonBurger.classList.remove('button-burger_is-invisible')
     }
     this._close();
     this._removeEventListeners();
   }
 
   isPopupOpen = () => {
-    return this.popups.every(popup => popup.classList.contains('popup_is-invisible'))
+    return this._popups.every(popup => popup.classList.contains('popup_is-invisible'))
   }
 
   _setEventListeners = () => {
@@ -174,25 +169,20 @@ export default class PopupSignup extends Popup {
     this._openLinkPopup();
   }
 
-  disableForm = () => {
-
+  _disableForm = () => {
     this._inputs.forEach((input) =>
       input.setAttribute('disabled', true)
     );
-    // this._buttonSubmit.classList.remove('button_state_active');
     this._buttonSubmit.classList.add('button_state_inactive');
     this._buttonSubmit.setAttribute('disabled', true);
   };
 
 
-  enableForm = () => {
+  _enableForm = () => {
     this._inputs.forEach((input) =>
       input.removeAttribute('disabled')
     );
     this._buttonSubmit.classList.remove('button_state_inactive');
-    // this._buttonSubmit.classList.add('button_state_active');
     this._buttonSubmit.removeAttribute('disabled');
   };
-
-
 }
