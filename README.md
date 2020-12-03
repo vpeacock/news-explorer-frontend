@@ -3,6 +3,8 @@
 
 ## Реализация финальной стадии дипломного проекта
 
+**Рабочая версия сайта доступна по адресу:**  https://explorernews.tk/
+
 **С проектом можно ознакомится по адресу:**  https://vpeacock.github.io/news-explorer-frontend/
 
 **Курс веб-разработки от Яндекс Практикума** https://praktikum.yandex.ru/web

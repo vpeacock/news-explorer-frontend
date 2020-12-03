@@ -14,8 +14,7 @@ export const NEWS_API_OPTIONS = {
 };
 
 export const MAIN_API_OPTIONS = {
-  // baseUrl: 'https://api.explorernews.tk',
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.explorernews.tk',
   headers: {
     'Content-Type': 'application/json',
   },
