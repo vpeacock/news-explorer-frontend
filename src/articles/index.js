@@ -3,59 +3,27 @@ import "../styles/articles.css";
 import {
   MAIN_BY_PATH,
   MAIN_API_OPTIONS,
-  NEWS_API_OPTIONS,
 } from '../js/config/index.js';
 
 
 import {
-
-  popupAuthButton, popupRegisterButton,
-  formSignup, formEnter,
-  emailInputSignup, passwordInputSignup, nameCheckSignup,
-  emailLoginAuth, loginPasswordAuth,
-  page, nav, buttonCloseMenu, popupButtonClose,
-  overlayPopup,
-  navMain, navArticles, navAuthorization, navUserName, buttonIcon,
-
-  popupSignupDE, popupLoginDE, popupSuccessfulSignupDE, formSearch, overlay,
-  buttonBurger, authButton, loginLink, registerLink, enterButtonDE, userLogoutButton,
-  itemUnath, itemsAuth, navMenuMobile, mobileMenuClose, popups, articlesContainer,
+  overlay, buttonBurger, authButton, userLogoutButton,
+  itemUnath, itemsAuth, navMenuMobile, mobileMenuClose, articlesContainer,
   articlesMore, messagePreloader, messageNotFound, messageServerError, articlesSection,
   headerLogo, userName, blockKeywords, keywords, articlesCount
 } from '../js/constants/constantsDomElements';
 
-import VALIDATION_HINT_MESSAGES from "../js/constants/errors-messages";
 
 import MainApi from '../js/api/MainApi';
-import NewsApi from '../js/api/NewsApi';
-import FormValidator from '../js/components/FormValidator';
-import UserInfo from '../js/components/UserInfo';
-import RegUser from '../js/components/RegUser';
 import Header from '../js/components/Header';
-import Button from "../js/components/Button";
-import PopupSignup from "../js/components/PopupSignup";
-import PopupSuccess from "../js/components/PopupSuccess";
-import PopupLogin from "../js/components/PopupLogin";
 import MenuMobile from "../js/components/MenuMobile";
 import Articles from "../js/components/Articles";
 import ArticlesList from "../js/components/ArticlesList";
-import Search from "../js/components/Search";
 import InfoBlock from "../js/components/InfoBlock";
 
 import Page from "../js/components/Page";
 (function () {
   //Functions library?======================================================>
-  const openPopupLogin = () => {
-    instPopupLog.open();
-  }
-
-  const openPopupSignup = () => {
-    instPopupSignup.open();
-  }
-
-  const openPopupSuccess = () => {
-    instPopupSuccess.open();
-  }
 
   const renderHeader = () => {
     instHeader.render();
@@ -133,19 +101,11 @@ import Page from "../js/components/Page";
 
   })
 
-
-
   buttonBurger.addEventListener('click', () => {
     instMenuMobile.open()
   });
 
-
-
-  // instHeader.render();
-  // instPage.getArticles();
-  // instInfoBlock.render();
-
-  function isAuth() {
+  const isAuth = () => {
     sessionStorage.articles = [];
     Promise.all([instPage.getArticles(), instHeader.render()])
       .then(() => {

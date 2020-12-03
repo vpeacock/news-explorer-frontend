@@ -3,12 +3,12 @@ import Popup from './Popup';
 export default class PopupSuccess extends Popup {
   constructor(props) {
     super(props);
-    this.page = props.page;
+    this._page = props.page;
     this._popup = props.popup;
     this._link = this._popup.querySelector('.popup__text')
     this._openLinkPopup = props.openLinkPopup;
-    this.buttonBurger = props.buttonBurger;
-    this.popups = props.popups;
+    this._buttonBurger = props.buttonBurger;
+    this._popups = props.popups;
   }
 
   open = () => {
@@ -17,15 +17,15 @@ export default class PopupSuccess extends Popup {
   }
 
   close = () => {
-    if(this.buttonBurger.classList.contains('button-burger_is-invisible') && this.isPopupOpen) {
-      this.buttonBurger.classList.remove('button-burger_is-invisible')
+    if(this._buttonBurger.classList.contains('button-burger_is-invisible') && this._isPopupOpen) {
+      this._buttonBurger.classList.remove('button-burger_is-invisible')
     }
     this._close();
     this._removeEventListeners();
   }
 
-  isPopupOpen = () => {
-    return this.popups.every(popup => !popup.classList.contains('popup_is-invisible'))
+  _isPopupOpen = () => {
+    return this._popups.every(popup => !popup.classList.contains('popup_is-invisible'))
   }
 
   _setEventListeners = () => {
@@ -37,12 +37,9 @@ export default class PopupSuccess extends Popup {
     this._removeListeners();
     this._link.removeEventListener('click', this._changePopups)
   }
-
-
+  
   _changePopups = () => {
     this.close();
     this._openLinkPopup();
   }
-
-
 }

@@ -3,27 +3,27 @@ import Popup from './Popup';
 export default class PopupLogin extends Popup {
   constructor(props) {
     super(props);
-    this.page = props.page;
+    this._page = props.page;
     this._popup = props.popup;
     this._api = props.api;
-    this.renderHeader = props.renderHeader;
+    this._renderHeader = props.renderHeader;
     this._openLinkPopup = props.openLinkPopup;
-    this.buttonBurger = props.buttonBurger;
-    this.menu = props.menu;
-    this.popups = props.popups;
-    this.closeMenuMobile = props.closeMenuMobile;
+    this._buttonBurger = props.buttonBurger;
+    this._menu = props.menu;
+    this._popups = props.popups;
+    this._closeMenuMobile = props.closeMenuMobile;
     this._serverError = this._popup.querySelector('.error-message_center');
-    this.VALIDATION_HINT_MESSAGES = props.messages;
+    this._VALIDATION_HINT_MESSAGES = props.messages;
     this._form = this._popup.querySelector('.popup__form');
     this._inputs = [...this._form.querySelectorAll('input')];
     this._emailInput = this._form.querySelector('#email-login-auth');
     this._passwordInput = this._form.querySelector('#login-password-auth');
     this._buttonSubmit = this._form.querySelector('.button');
     this._link = this._form.querySelector('#register');
-    this.userInfo = {};
-    this.userLogoutButton = props.button;
+    this._userInfo = {};
+    this._userLogoutButton = props.button;
     this.renderArticles = props.renderArticles;
-    // this.clearArticlesList = props.clearArticlesList;
+
   }
 
   _signinUserForm = (event) => {
@@ -32,34 +32,26 @@ export default class PopupLogin extends Popup {
       this._authUserInfo({
         email: this._emailInput.value,
         password: this._passwordInput.value,
-
       });
-      // this.close();
-      // this._popupSuccess.open();
     }
   };
 
   _authUserInfo = (data) => {
-    this.disableForm()
-    this.userInfo = data;
-    // const articles = JSON.parse(sessionStorage.articles);
-    this._api.signin(this.userInfo)
+    this._disableForm()
+    this._userInfo = data;
+    this._api.signin(this._userInfo)
       .then((res) => {
         this.close(true);
-        this.renderHeader();
-        // this.clearArticlesList();
-
+        this._renderHeader();
 
       })
-      // .then(() => {
-      //   setTimeout(this.page.setArticleData(articles), 5000);
-      // })
+
       .catch((err) => {
         this._serverError.textContent = err.message
         console.log(err.message);
       })
       .finally(() => {
-        this.enableForm();
+        this._enableForm();
         this._form.reset();
       })
   }
@@ -77,22 +69,22 @@ export default class PopupLogin extends Popup {
   _isValidate = (input) => {
     input.setCustomValidity('');
     if (input.validity.valueMissing) {
-      input.setCustomValidity(this.VALIDATION_HINT_MESSAGES.requiredField);
+      input.setCustomValidity(this._VALIDATION_HINT_MESSAGES.requiredField);
       return false;
     }
 
     if (input.name === 'email' && input.validity.patternMismatch) {
-      input.setCustomValidity(this.VALIDATION_HINT_MESSAGES.InvalidEmail);
+      input.setCustomValidity(this._VALIDATION_HINT_MESSAGES.InvalidEmail);
       return false;
     }
 
     if (input.validity.tooShort || input.validity.tooLong) {
       if (input.type === 'text') {
-        input.setCustomValidity(this.VALIDATION_HINT_MESSAGES.NameLengthError);
+        input.setCustomValidity(this._VALIDATION_HINT_MESSAGES.NameLengthError);
         return false;
       }
       else if (input.name === 'password') {
-        input.setCustomValidity(this.VALIDATION_HINT_MESSAGES.PasswordLengthError);
+        input.setCustomValidity(this._VALIDATION_HINT_MESSAGES.PasswordLengthError);
         return false;
       }
 
@@ -139,10 +131,10 @@ export default class PopupLogin extends Popup {
   };
 
   open = () => {
-    if (this.menu.classList.contains('nav_is-visible')) {
-      this.closeMenuMobile();
+    if (this._menu.classList.contains('nav_is-visible')) {
+      this._closeMenuMobile();
     }
-    this._clearErrors()
+    this._clearErrors();
     this._setSubmitButtonState(false);
     this._open();
     this._setEventListeners();
@@ -151,23 +143,14 @@ export default class PopupLogin extends Popup {
 
 
   close = (flag) => {
-    if (this.buttonBurger.classList.contains('button-burger_is-invisible') && flag) {
-      this.buttonBurger.classList.remove('button-burger_is-invisible')
+    if (this._buttonBurger.classList.contains('button-burger_is-invisible') && flag) {
+      this._buttonBurger.classList.remove('button-burger_is-invisible')
     }
     this._close();
-    // this.userLogoutButton.show();
   }
 
-  // isPopupOpen = () => {
-  //   let isOpen = false;
-  //   this.popups.forEach(popup => {
-  //     if (popup.classList.contains('popup_is-invisible') {
-  //       isOpen = true;
-  //   });
-  // }
-
-  isPopupOpen = () => {
-    return this.popups.every(popup => !popup.classList.contains('popup_is-invisible'));
+  _isPopupOpen = () => {
+    return this._popups.every(popup => !popup.classList.contains('popup_is-invisible'));
   }
 
   _setEventListeners = () => {
@@ -191,27 +174,24 @@ export default class PopupLogin extends Popup {
   }
 
   _changePopups = () => {
-    this.close(false);
+    this._close(false);
     this._openLinkPopup();
   }
 
-  disableForm = () => {
-
+  _disableForm = () => {
     this._inputs.forEach((input) =>
       input.setAttribute('disabled', true)
     );
-    // this._buttonSubmit.classList.remove('button_state_active');
     this._buttonSubmit.classList.add('button_state_inactive');
     this._buttonSubmit.setAttribute('disabled', true);
   };
 
 
-  enableForm = () => {
+  _enableForm = () => {
     this._inputs.forEach((input) =>
       input.removeAttribute('disabled')
     );
     this._buttonSubmit.classList.remove('button_state_inactive');
-    // this._buttonSubmit.classList.add('button_state_active');
     this._buttonSubmit.removeAttribute('disabled');
   };
 

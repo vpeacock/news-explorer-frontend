@@ -12,15 +12,12 @@ export default class InfoBlock {
 
   render = () => {
     this.userNameDE.textContent = this.name;
-    const count = this.getArticleInfo().count;
-    const countKeywords = this.getKeywordsInfo().count;
+    const countArticles = this.getArticleInfo().count;
     this.articlesCountDE.textContent = this.getArticleCount();
-    console.log(count);
-    if (count === 0) {
+    if (countArticles === 0) {
       this.blockKeywordsDE.classList.add('user-block__keywords_is-invisible');
     }
     this.keywordsDE.textContent = this.getKeywordsInfo();
-
   }
 
   getArticleInfo = () => {
@@ -40,7 +37,7 @@ export default class InfoBlock {
 
   setEndings = (num) => {
     num %= 100;
-    if (num >= 5 && num <= 20) {
+    if (num >= 4 && num <= 20) {
       return `сохраненных статей`;
     }
     num %= 10;
@@ -50,7 +47,7 @@ export default class InfoBlock {
     if (num >= 2 && num <= 4) {
       return `сохраненных статьи`;
     }
-    return `сохраненных статей`;
+    return `сохраненные статьи`;
   }
 
   getKeywordsInfo = () => {

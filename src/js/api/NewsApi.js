@@ -1,5 +1,4 @@
 import UtilsDate from "../utils/UtilsDate";
-// import getDate from "../utils/index";
 
 export default class NewsApi {
   constructor(props) {
@@ -7,8 +6,8 @@ export default class NewsApi {
   }
 
   getNews(keyword) {
-    const utilsDate = new UtilsDate({date: new Date(), period: this.options.findPeriodTime});
-     return fetch(`${this.options.newsUrl}${keyword.keyword}&from=${utilsDate.getPrevDate()}&to=${utilsDate.getCurrentDate()}&language=${this.options.language}&sortBy=${this.options.sortBy}&pageSize=${this.options.pageSize}&apiKey=${this.options.key}`)
+    const utilsDate = new UtilsDate({ date: new Date(), period: this.options.findPeriodTime });
+    return fetch(`${this.options.newsUrl}${keyword.keyword}&from=${utilsDate.getPrevDate()}&to=${utilsDate.getCurrentDate()}&language=${this.options.language}&sortBy=${this.options.sortBy}&pageSize=${this.options.pageSize}&apiKey=${this.options.key}`)
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -18,6 +17,4 @@ export default class NewsApi {
       })
       .catch((err) => Promise.reject(err));
   }
-
-
 }

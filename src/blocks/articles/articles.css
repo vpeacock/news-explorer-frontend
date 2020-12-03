@@ -4,10 +4,6 @@
 @import url("./__button/articles__button.css");
 @import url("./_is-invisible/articles_is-invisible.css");
 
-/* .articles {
-  background: #F5F6F7;
-} */
-
 .message.articles, .articles {
   display: block;
   min-width: 288px;
