@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+<meta name="description" content="Поисковик  мировых новостей">
+<meta name="keywords" content="новости, природа, политика, читать, найти">
+<meta name="author" content="Альтухова Валентина">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="shortcut icon" href="<%=require('../images/fav.png').default %>" type="image/png">
+<title>World news explorer</title>
+<link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>">
+
+<!-- page_no-scroll -->
+
+<body class="page">
+  <header class="header">
+    <div class="container header__container">
+      <a class="logo logo_color_black header__logo" href="./">NewsExplorer</a>
+      <button class="button-burger button-burger_icon_black-menu"></button>
+      <nav class="nav">
+        <ul class="lists nav__lists">
+          <li class="lists__item"><a href="./" class="nav__link nav__link_black">Главная</a> </li>
+          <li class="lists__item  link__passive "><a href="./articles"
+              class="nav__link link__active-black nav__link_black">Сохраненные статьи</a>
+          </li>
+          <li class="lists__item"><button class="button button_size_m button_color_light">Гретта<span
+                class="button__icon button__icon_location_articles"> </button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="user-block">
+    <div class="container user-block__container">
+      <p class="user-block__subtitle">Сохраненные статьи</p>
+      <h1 class="user user-block__title title_size_m">
+        <span class="user__name">Грета</span>, у вас <span class="title__count">5
+        </span>сохранённых статей</h1>
+      <p class="user-block__keywords">По ключевым словам: <span class="user-block__keyword">Природа</span>, <span
+          class="user-block__keyword">Тайга</span> и <span class="user-block__keyword">2-м другим</span></p>
+    </div>
+  </section>
+
+  <main class="content">
+    <section class="articles">
+         <div class="container">
+        <h2 class="articles__title title_size_m">Результаты поиска</h2>
+        <ul class="articles__grid">
+
+          <li class="article">
+            <span class="article__keyword">Природа</span>
+            <div class="article__button-container">
+              <button class="article__button article__button_type_trash"><span class="article__tooltip-text">
+                  Убрать из сохранённых</span></button>
+            </div>
+            <a href="https://lenta.ru/" target="_blank" class="link-container">
+              <img class="article__image" src="<%=require('../images/card1_mobile.jpg').default%>"
+                alt="На фотографии изображен куст шалфея">
+              <div class="article__text-container">
+                <p class="article__date">2 августа, 2019</p>
+                <h3 class="title title_size_s article__title">Национальное достояние – парки</h3>
+                <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+                  складываться система национальных парков...</p>
+                <span class="title title_size_xs article__link">лента.ру</span>
+              </div>
+            </a>
+          </li>
+
+          <li class="article">
+            <span class="article__keyword">Природа</span>
+            <div class="article__button-container">
+              <button class="article__button article__button_type_trash"><span class="article__tooltip-text">
+                  Убрать из сохранённых</span></button>
+            </div>
+            <a href="https://meduza.io/" target="_blank" class="link-container">
+              <img class="article__image" src="<%=require('../images/card2_mobile.jpg').default%>"
+                alt="На фотографии изображено растение на сером фоне">
+              <div class="article__text-container">
+                <p class="article__date">2 августа, 2019</p>
+                <h3 class="title title_size_s article__title">Национальное достояние – парки</h3>
+                <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+                  складываться система национальных парков...</p>
+                <span class="title title_size_xs article__link">медуза</span>
+              </div>
+            </a>
+          </li>
+
+          <li class="article">
+            <span class="article__keyword">Тайга</span>
+            <div class="article__button-container">
+              <button class="article__button article__button_type_trash"><span class="article__tooltip-text">
+                  Убрать из сохранённых</span></button>
+            </div>
+            <a href="https://ria.ru/" target="_blank" class="link-container">
+              <img class="article__image" src="<%=require('../images/card3_mobile.jpg').default%>"
+                alt="На фотографии изображен фон из зеленых листочков растения">
+              <div class="article__text-container">
+                <p class="article__date">2 августа, 2019</p>
+                <h3 class="title title_size_s article__title">Национальное достояние – парки</h3>
+                <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+                  складываться система национальных парков...</p>
+                <span class="title title_size_xs article__link">риа</span>
+              </div>
+            </a>
+          </li>
+
+          <li class="article">
+            <span class="article__keyword">Парки</span>
+            <div class="article__button-container">
+              <button class="article__button article__button_type_trash"><span class="article__tooltip-text">
+                  Убрать из сохранённых</span></button>
+            </div>
+            <a href="https://lenta.ru/" class="link-container">
+              <img class="article__image" src="<%=require('../images/card2_mobile.jpg').default%>"
+                alt="На фотографии изображено растение на сером фоне">
+              <div class="article__text-container">
+                <p class="article__date">2 августа, 2019</p>
+                <h3 class="title title_size_s article__title">Национальное достояние – парки</h3>
+                <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+                  складываться система национальных парков...</p>
+                <span class="title title_size_xs article__link">медуза</span>
+              </div>
+            </a>
+          </li>
+
+          <li class="article">
+            <span class="article__keyword">Фотография</span>
+            <div class="article__button-container">
+              <button class="article__button article__button_type_trash"><span class="article__tooltip-text">
+                  Убрать из сохранённых</span></button>
+            </div>
+            <a href="https://lenta.ru/" class="link-container">
+              <img class="article__image" src="<%=require('../images/card2_mobile.jpg').default%>"
+                alt="На фотографии изображено растение на сером фоне">
+              <div class="article__text-container">
+                <p class="article__date">2 августа, 2019</p>
+                <h3 class="title title_size_s article__title">Национальное достояние – парки</h3>
+                <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+                  складываться система национальных парков...</p>
+                <span class="title title_size_xs article__link">медуза</span>
+              </div>
+            </a>
+          </li>
+
+
+        </ul>
+        <button class="button button_size_l button_color_white articles__button">Показать еще</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <span class="footer__copyright">© 2020 Supersite, Powered by News API</span>
+      <nav class="navigation navigation_location_footer">
+        <ul class="navigation__links">
+          <li class="navigation__item">
+            <a href="./" class="navigation__link">Главная</a></li>
+          <li class="navigation__item">
+            <a href="https://praktikum.yandex.ru" class="navigation__link">Яндекс.Практикум</a>
+          </li>
+        </ul>
+        <ul class="social">
+          <li class="social__item"><a href="https://github.com/vpeacock/" class="social__link">
+              <img src="<%=require('../images/github-mobile.svg').default%>" alt="Иконка Github"
+                class="social__img"></a></li>
+          <li class="social__item"><a href="https://facebook.com" class="social__link"><img
+                src="<%=require('../images/facebook-mobile.svg').default%>" alt="Иконка социальной сети Facebook"
+                class="social__img"></a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- popup_is-invisible-->
+  <div class="popup popup_type_menu-mobile popup_is-invisible" id="popup__menu-mobile">
+    <div class="popup__container popup__container_type_menu-mobile">
+      <img src="<%=require('../images/close_white_mobile.svg').default%>" alt="Иконка закрытия окна"
+        class="popup__close popup__close_menu">
+      <div class="container container_border-bottom">
+        <a class="logo logo_color_white header__logo" href="./">NewsExplorer</a>
+      </div>
+      <div class="container">
+        <nav class="nav nav_mobile">
+          <ul class="lists nav__lists-mobile">
+            <li class="lists__item-mobile"><a href="./" class="nav__link">Главная</a> </li>
+            <li class="lists__item-mobile link__passive"><a href="./articles" class="nav__link">Сохраненные
+                статьи</a>
+            </li>
+            <li class="lists__item-mobile"><button
+                class="button button_size_m button_color_dark button_mobile">Гретта<span
+                  class="button__icon button__icon_location_main"> </button></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <script src="<%= htmlWebpackPlugin.files.js %>"></script>
+
+</body>
+
+</html>

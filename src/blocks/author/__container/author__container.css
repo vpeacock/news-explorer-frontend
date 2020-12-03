@@ -1,0 +1,15 @@
+.author__container {
+  grid-template-columns: 1fr;
+display: grid;
+justify-items: center;
+padding-bottom: 80px;
+padding-top: 50px;
+
+}
+
+@media screen and (min-width: 768px) {
+  .author__container {
+    grid-template-columns: auto 1fr;
+    grid-gap:20px;
+  }
+}

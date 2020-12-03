@@ -1,0 +1,17 @@
+@import url('_black/nav__link_black.css');
+.nav__link {
+  color: #fff;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    padding-bottom: 23px;
+
+}
+
+@media screen and (min-width: 768px) {
+  .nav__link {
+    font-size: 16px;
+  }
+}
+

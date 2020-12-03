@@ -1,0 +1,20 @@
+.articles__button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #1a1b22;
+  line-height: 24px;
+  border: none;
+  padding: 0;
+  margin: 30px auto 32px;
+  display: block;
+
+}
+
+.articles__button:hover {
+  cursor: pointer;
+  background: #FFFFFF;
+}
+
+

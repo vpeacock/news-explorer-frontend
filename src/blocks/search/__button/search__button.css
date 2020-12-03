@@ -1,0 +1,34 @@
+.search__button {
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(14, 26, 57, 0.2);
+  border-radius: 100px;
+  margin-top: 16px;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+  width: 100%;
+}
+
+.search__button:hover {
+background: #347EFF;
+box-shadow: 0 5px 15px rgba(14, 26, 57, 0.2);
+
+}
+
+@media screen and (min-width: 768px) {
+  .button.search__button {
+    position: absolute;
+    top:0;
+    right: 0;
+    width:160px;
+    display: block;
+    margin-top: 0;
+
+  }
+
+  .button.button_size_l.search__button {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+

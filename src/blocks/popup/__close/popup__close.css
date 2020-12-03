@@ -1,0 +1,12 @@
+@import url('_menu/popup__close_menu.css');
+
+.popup__close{
+  right: 16px;
+  top: -44px;
+  background-color: #1a1b22;
+  width: 24px;
+  position: absolute;
+  z-index: 2;
+  background-color: transparent;
+  cursor: pointer;
+}

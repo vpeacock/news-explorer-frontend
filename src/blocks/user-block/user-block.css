@@ -1,0 +1,11 @@
+@import url('__subtitle/user-block__subtitle.css');
+@import url('__title/user-block__title.css');
+@import url('__keywords/user-block__keywords.css');
+@import url('__keyword/user-block__keyword.css');
+@import url('__container/user-block__container.css');
+
+.user-block {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}

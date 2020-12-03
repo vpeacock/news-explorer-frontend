@@ -1,0 +1,10 @@
+@import url('_is-opened/error-message_is-opened.css');
+@import url('_center/error-message_center.css');
+
+.error-message {
+  font-family: Inter, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  opacity: 0;
+}

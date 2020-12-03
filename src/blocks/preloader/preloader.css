@@ -1,0 +1,6 @@
+@import url('__text/preloader__text.css');
+@import url('__container/preloader__container.css');
+
+.preloader {
+  background-color: #F5F6F7;
+}

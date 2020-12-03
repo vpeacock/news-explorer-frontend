@@ -1,0 +1,11 @@
+.article__button_type_bookmark {
+  background-image: url(../../../../images/bookmark_mobile.svg);
+ }
+
+ .article__button_type_bookmark:hover {
+  background-image: url(../../../../images/bookmark-mobile-hover.svg);
+ }
+
+ .article__button_type_bookmark:active {
+  background-image: url(../../../../images/icon-marked.svg);
+ }

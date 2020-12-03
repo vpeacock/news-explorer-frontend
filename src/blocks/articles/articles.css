@@ -1,0 +1,11 @@
+@import url("./_is-opened/articles_is-opened.css");
+@import url("./__grid/articles__grid.css");
+@import url("./__title/articles__title.css");
+@import url("./__button/articles__button.css");
+
+.articles {
+  min-width: 288px;
+  padding: 0 0 30px;
+  margin: 0 auto;
+  background: #F5F6F7;
+}

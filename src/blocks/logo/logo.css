@@ -1,0 +1,10 @@
+@import url("./_color/logo_color_white.css");
+@import url("./_color/logo_color_black.css");
+.logo {
+  font-family: Roboto Slab, Arial, serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+}

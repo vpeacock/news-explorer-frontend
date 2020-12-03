@@ -1,0 +1,10 @@
+.button_color_white {
+  background-color: #FFFFFF;
+}
+
+.button_color_white:hover {
+  cursor: pointer;
+
+}
+
+

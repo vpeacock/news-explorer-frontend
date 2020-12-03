@@ -1,0 +1,7 @@
+.article__button_type_trash {
+  background-image: url(../../../../images/trash_mobile.svg);
+}
+
+.article__button_type_trash:hover {
+  background-image: url(../../../../images/trash_hover.svg);
+}

@@ -1,0 +1,6 @@
+.nav__lists-mobile{
+  padding-left: 0;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 16px;
+}

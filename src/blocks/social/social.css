@@ -1,0 +1,16 @@
+@import url("__item/social__item.css");
+.social {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 56px;
+
+}
+
+
+@media screen and (min-width: 768px) {
+  .social  {
+    margin: 0;
+  }
+}

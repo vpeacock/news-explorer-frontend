@@ -1,0 +1,7 @@
+.nav__lists {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
